@@ -1,0 +1,14 @@
+.App{
+    overflow-x: hidden;
+   /* background-image: linear-gradient(106deg,#040044,#7222a7)  */
+   background-image: url(./assets/galaxybg-1.jpg);
+   background-position: center;
+    background-size: contain;
+}
+
+/* .particle-js{
+    position: fixed;
+} */
+.tsparticles-canvas-el {
+  position: fixed;
+}
