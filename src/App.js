@@ -3,9 +3,11 @@ import Particles from "react-particles-js";
 import LandingPage from './Components/LandingPage/LandingPage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Component } from 'react';
 
-function App() {
-  return (
+class App extends Component  {
+  render(){
+return (
     <Router>
       <div className="App">
         {/* <Dashboard /> */}
@@ -35,6 +37,8 @@ function App() {
       </div>
     </Router>
   );
+  }
+  
 }
 
 export default App;
