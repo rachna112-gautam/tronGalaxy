@@ -8,6 +8,22 @@
   height: auto;
 }
 
+
+div#navbarSupportedContent {
+  justify-content: flex-end;
+}
+
+.icon-box{
+  height: 40px;
+  width: 41px;
+}
+
+.icon-box img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .top-navbar {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 0.75rem;
@@ -24,7 +40,7 @@
 
 .navbar-logo {
   display: inline-block;
-  height: 80px;
+  height: 55px;
   width: 200px;
 }
 
@@ -49,6 +65,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 0.4rem;
+  color: #fff !important;
 }
 
 .address span {
@@ -62,7 +79,7 @@
 }
 
 .btnn {
-  border: 2px solid cadetblue;
+  border: 2px solid cadetblue !important;
   border-radius: 0.4rem;
   padding: 0.5rem 1rem;
   color: rgb(255, 255, 255);
@@ -76,7 +93,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.logout-btn {
+.logout .logout-btn {
   background-color: #8a5dbd;
   color: #fff;
   font-size: 1.2rem;
@@ -197,6 +214,7 @@
 .user i,
 .user span {
   font-size: 2.2rem;
+  color: #fff !important;
 }
 
 .links {
@@ -259,4 +277,14 @@ th {
   .top-info {
     margin: 1rem;
   }
+}
+
+
+@media (max-width: 500px){
+.navbar-nav {
+    border-top: 1px solid #1a1918 !important;
+    color: #fff;
+    z-index: 1;
+    margin-top: 5px;
+}
 }

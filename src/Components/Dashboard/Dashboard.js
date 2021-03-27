@@ -4,10 +4,12 @@ import Right from './Sections/Right';
 import TopNav from './Sections/TopNav';
 import Left from './Sections/Left';
 import Table from './Sections/Table';
+import Header from './Sections/Header';
 const Dashboard = () => {
     return (
         <div className="dashboard">
-            <TopNav />
+            {/* <TopNav /> */}
+            <Header/>
             <div className="row flex-wrap-reverse">
                 <div className="col-lg-8">
                     <Left />
