@@ -23,13 +23,13 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar className="header" dark expand="md">
+      <Navbar className="header " dark expand="md">
         <NavbarBrand href="/">
           <img src={logo} alt="logo" className="logo"></img>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} navbar-dark />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav navbar className="header-link">
             <NavItem>
               <NavLink href="/components/">Components</NavLink>
             </NavItem>
@@ -38,19 +38,12 @@ const Header = () => {
                 GitHub
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
+              <NavLink href="/dashboard" className="btn more-btn">
+                Login
+              </NavLink>
+            </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
     </div>

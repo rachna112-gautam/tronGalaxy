@@ -40,3 +40,18 @@
     color: white !important;
     font-size: larger !important;
 }
+.header-link{
+    & a{
+        color: white !important;
+    font-size: large !important;
+    font-weight: 600 !important;
+    }
+}
+.navbar-collapse{
+        justify-content: flex-end;
+}
+.login{
+        margin-top: 7px;
+    margin-left: 25px;
+}
+
