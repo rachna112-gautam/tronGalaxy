@@ -9,4 +9,34 @@
 }
 .welcome-heading{
        font-size: 78px !important;
+       text-align: center;
+}
+.aboutus-heading{
+    font-weight: 700;
+    color: white;
+        font-size: 17px !important;
+}
+.heading{
+    background-color: #fbfbfbad !important;
+}
+.logo{
+    width: 130px !important;
+}
+.navbar-dark .navbar-toggler, .navbar-white .navbar-toggler, .navbar-cyan .navbar-toggler{
+    background-color: transparent !important;
+}
+@media(max-width:600px){
+    .hero-section{
+        display: contents !important;
+    }
+    .welcome-heading{
+        font-size: 36px !important;
+    }
+}
+.more-btn{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+    font-size: larger !important;
 }

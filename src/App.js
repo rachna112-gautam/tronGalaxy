@@ -9,6 +9,7 @@ function App() {
     <Router>
       <div className="App">
         {/* <Dashboard /> */}
+        
         <Particles
           className="particles"
           params={{
@@ -31,7 +32,7 @@ function App() {
           }}
         />
         <Route path="/" exact component={LandingPage} />
-        <Route path='/dashboard' exact component={Dashboard} />
+        <Route path="/dashboard" exact component={Dashboard} />
       </div>
     </Router>
   );

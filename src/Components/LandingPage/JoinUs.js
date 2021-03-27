@@ -21,64 +21,7 @@ const JoinUs=()=>{
             </p>
           </div>
           <div className="row dark-row pt-60">
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="contribution-c-wapper has-arrow-right-lg has-arrow-top-md has-arrow-right-md has-arrow-down-sm">
-                {/* Content */}
-                <div
-                  className="service_single_content text-center mb-30 fadeInUp"
-                  data-wow-delay="0.2s"
-                >
-                  {/* Icon */}
-                  <div className="cycle_icon">
-                    <span className="gradient-t orange">1</span>
-                  </div>
-                  <h6>Creative Chart Modules</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem
-                    ipsum quam, maximus ut accumsan.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-6 col-lg-4 mt-sm-30">
-              <div className="contribution-c-wapper has-arrow-right-lg has-arrow-bottom-md has-arrow-down-sm">
-                <div
-                  className="service_single_content text-center mb-30 fadeInUp"
-                  data-wow-delay="0.3s"
-                >
-                  {/* Icon */}
-                  <div className="cycle_icon">
-                    <span className="gradient-t pink">2</span>
-                  </div>
-                  <h6>Adaptive Social Assistant</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem
-                    ipsum quam, maximus ut accumsan.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-6 col-lg-4 mt-s">
-              <div className="contribution-c-wapper has-arrow-top-md has-arrow-down-sm">
-                <div
-                  className="service_single_content text-center mb-30 fadeInUp"
-                  data-wow-delay="0.4s"
-                >
-                  {/* Icon */}
-                  <div className="cycle_icon">
-                    <span className="gradient-t blue">3</span>
-                  </div>
-                  <h6>Ecommerce Embedded</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem
-                    ipsum quam, maximus ut accumsan.
-                  </p>
-                </div>
-              </div>
-            </div>
+           
             <div className="col-lg-4 hidden-md hidden-sm hidden-xs">
               <img
                 src="img/svg/join-bottom.svg"
@@ -94,7 +37,7 @@ const JoinUs=()=>{
                 <span>Join us</span>
               </div>
               <h2 className="fadeInUp" data-wow-delay="0.3s">
-                Contribution Cycle
+                How It Work?
               </h2>
             </div>
             <div className="col-lg-4 hidden-md hidden-sm hidden-xs">
@@ -108,15 +51,11 @@ const JoinUs=()=>{
                   data-wow-delay="0.2s"
                 >
                   {/* Icon */}
-                  <div className="cycle_icon">
+                  {/* <div className="cycle_icon">
                     <span className="gradient-t green">6</span>
-                  </div>
-                  <h6>Creative Chart Modules</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem
-                    ipsum quam, maximus ut accumsan.
-                  </p>
+                  </div> */}
+                  <h1>$30=Trx?</h1>
+                  
                 </div>
               </div>
             </div>
@@ -127,15 +66,13 @@ const JoinUs=()=>{
                   data-wow-delay="0.3s"
                 >
                   {/* Icon */}
-                  <div className="cycle_icon">
+                  {/* <div className="cycle_icon">
                     <span className="gradient-t green">5</span>
-                  </div>
-                  <h6>Adaptive Social Assistant</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem
-                    ipsum quam, maximus ut accumsan.
-                  </p>
+                  </div> */}
+                  <h1>Growth</h1>
+                  <h6>
+                    Just Invest in one time get regular growth
+                  </h6>
                 </div>
               </div>
             </div>
@@ -146,15 +83,11 @@ const JoinUs=()=>{
                   data-wow-delay="0.4s"
                 >
                   {/* Icon */}
-                  <div className="cycle_icon">
+                  {/* <div className="cycle_icon">
                     <span className="gradient-t pink">4</span>
-                  </div>
-                  <h6>Ecommerce Embedded</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla neque quam, maxi ut accumsan ut, posuere sit Lorem
-                    ipsum quam, maximus ut accumsan.
-                  </p>
+                  </div> */}
+                  <h1>300%</h1>
+                  <h6>On your first investment you will get</h6>
                 </div>
               </div>
             </div>

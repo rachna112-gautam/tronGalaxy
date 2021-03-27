@@ -4,6 +4,7 @@ import './LandingPage.scss'
 const Welcome=()=>{
     return (
       <section className="hero-section moving section-padding" id="home">
+       
         <div className="moving-bg" />
         {/* Hero Content */}
         <div className="hero-section-content">
@@ -17,14 +18,14 @@ const Welcome=()=>{
                       Creative landing page template
                     </h3> */}
                   </div>
-                  <h1 className="fadeInUp" data-wow-delay="0.2s" className="welcome-heading">
-                    TronGalaxyPower
+                  <h1
+                    className="fadeInUp"
+                    data-wow-delay="0.2s"
+                    className="welcome-heading"
+                  >
+                    Welcome To TronGalaxy Power
                   </h1>
-                  <p className="w-text fadeInUp" data-wow-delay="0.3s">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Eveniet dolorem blanditiis ad perferendis, labore delectus
-                    dolor sit amet, adipisicing elit. Eveniet.
-                  </p>
+
                   <div
                     className="dream-btn-group fadeInUp"
                     data-wow-delay="0.4s"

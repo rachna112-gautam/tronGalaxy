@@ -1,4 +1,5 @@
 import React from 'react'
+import galaxy2 from '../../assets/galaxy2.png'
 
 const AboutUs=()=>{
     return (
@@ -7,7 +8,7 @@ const AboutUs=()=>{
           <div className="row align-items-center">
             <div className="col-12 col-lg-6 offset-lg-0 col-md-12 no-padding-left">
               <div className="welcome-meter fadeInUp" data-wow-delay="0.7s">
-                <img src="img/core-img/about-1.png" alt="" />
+                <img src={galaxy2} alt="" />
               </div>
             </div>
             <div className="col-12 col-lg-6 offset-lg-0">
@@ -20,18 +21,17 @@ const AboutUs=()=>{
                     Decentralized Trading Platform
                   </span>
                 </div>
-                <h4 className="fadeInUp" data-wow-delay="0.3s">
-                  Connect blockchain to the real world and start crypto tading.
-                </h4>
-                <p className="fadeInUp" data-wow-delay="0.4s">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  at dictum risus, non suscipit arcu. Quisque aliquam posuere
-                  tortor, sit amet convallis nunc scelerisque in.
+                
+                <p className="fadeInUp aboutus-heading" data-wow-delay="0.4s">
+                  We created Tron Blockchain Smart Contract,
+                  which is Decentralized for regular daily
+                  money growth Technology Business System.
+                  We committed for Trust, Ethics and
+                  Business Value with 100% Transparency.
+
                 </p>
-                <p className="fadeInUp" data-wow-delay="0.5s">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Suscipit ipsa ut quasi adipisci voluptates, voluptatibus
-                  aliquid alias beatae reprehenderit incidunt iusto laboriosam.
+                <p className="fadeInUp aboutus-heading" data-wow-delay="0.5s">
+                  System is User friendly,attractive and simple
                 </p>
                 <a
                   className="btn more-btn mt-30 fadeInUp"
