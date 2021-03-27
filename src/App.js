@@ -1,15 +1,19 @@
-import './App.css';
+import "./App.css";
 import Particles from "react-particles-js";
-import LandingPage from './Components/LandingPage/LandingPage';
-import Dashboard from './Components/Dashboard/Dashboard';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import LandingPage from "./Components/LandingPage/LandingPage";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import BlockchainProvider  from './BlockchainProvider/index';
 
-function App() {
+function App(props) {
+  console.log("contract info--->", props);
   return (
     <Router>
+      <BlockchainProvider />
       <div className="App">
         {/* <Dashboard /> */}
-        
+
         <Particles
           className="particles"
           params={{
@@ -38,4 +42,9 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    contract: state.account,
+  };
+};
+export default connect(mapStateToProps)(App);

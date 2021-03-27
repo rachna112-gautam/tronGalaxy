@@ -5,6 +5,7 @@ import JoinUs from './JoinUs';
 import Welcome from './Welcome';
 import './LandingPage.scss'
 import logo from '../../assets/TronGalaxyPower.png'
+import Pools from './Pools'
 
 const LandingPage = () => {
   return (
@@ -22,6 +23,11 @@ const LandingPage = () => {
       {/* ##### Our Services Area Start ##### */}
       <JoinUs />
       {/* ##### About Us Area Start ##### */}
+      {/* //pools starting */}
+      <Pools/>
+
+    
+
       <section className="about-us-area section-padding-0-100 clearfix">
         <div className="container">
           <div className="row align-items-center">

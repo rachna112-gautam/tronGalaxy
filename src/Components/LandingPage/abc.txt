@@ -536,6 +536,7 @@
           */}
 
           <div className="clearfix" />
+      
       <section className="token-distribution section-padding-0-70">
         <div className="container">
           <div className="section-heading text-center">
