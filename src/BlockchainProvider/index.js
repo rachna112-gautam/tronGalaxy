@@ -61,14 +61,18 @@ const BlockchainProvider = (props) => {
       contractData: contractData
     }))
 
-  }, [contract])
+
+  }, [contractData])
+
 
   useEffect(() => {
     initPersonalData(contract)
     props.dispatch(onPersonalDataLoaded({
       personalData: personalData
     }))
-  }, [contract])
+
+
+  }, [personalData])
 
 
   const loadContract = async (_tronWeb, myWallet) => {
