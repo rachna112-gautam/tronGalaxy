@@ -64,16 +64,13 @@ const Dashboard = (props) => {
 
     }
 
-    return (
-        <div className="dashboard">
-            {/* <TopNav /> */}
-            <Header />
 
-const Dashboard = () => {
+
+
     return (
         <div className="dashboard">
-            {/* <TopNav /> */}
-            <Header/>
+
+            <Header />
 
             <div className="row flex-wrap-reverse">
                 <div className="col-lg-8">
@@ -106,12 +103,13 @@ const Dashboard = () => {
         </div>
     )
 }
+
 const mapStateToProps = (state) => {
     return {
         personalData: state.personalData,
         contract: state.contract,
         account: state.account
     };
-};
+}
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard)
