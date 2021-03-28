@@ -57,13 +57,19 @@ const BlockchainProvider = (props) => {
 
   useEffect(() => {
     initContractData(contract)
+    props.dispatch(onContractDataLoaded({
+      contractData: contractData
+    }))
 
-  }, [contract])
+  }, [contractData])
 
   useEffect(() => {
     initPersonalData(contract)
+    props.dispatch(onPersonalDataLoaded({
+      personalData: personalData
+    }))
 
-  }, [contract])
+  }, [personalData])
 
 
   const loadContract = async (_tronWeb, myWallet) => {
@@ -133,7 +139,7 @@ const BlockchainProvider = (props) => {
       let id = res.id.toNumber();
       let directReferrals = res.totalReferrals.toNumber();
       let referrerIncome = beautifyNumber(res.referralIncome, true);
-      let currentPool = res.currPool.toNumber();
+      let currPool = res.currPool.toNumber();
       let earnedAmount = beautifyNumber(res.extraEarned, true);
       let cycles = res.cycles.toNumber();
       let isExist = res.isExist;
@@ -148,7 +154,7 @@ const BlockchainProvider = (props) => {
         id,
         directReferrals,
         referrerIncome,
-        currentPool,
+        currPool,
         totalMembers,
         releasedAmount,
         earnedAmount,
@@ -159,7 +165,7 @@ const BlockchainProvider = (props) => {
       console.log("data", id,
         directReferrals,
         referrerIncome,
-        currentPool,
+        currPool,
         totalMembers,
         releasedAmount,
         earnedAmount,
