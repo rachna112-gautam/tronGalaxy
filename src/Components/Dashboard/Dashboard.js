@@ -4,6 +4,7 @@ import Right from './Sections/Right';
 import Left from './Sections/Left';
 import Table from './Sections/Table';
 import Header from './Sections/Header';
+
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -67,6 +68,13 @@ const Dashboard = (props) => {
         <div className="dashboard">
             {/* <TopNav /> */}
             <Header />
+
+const Dashboard = () => {
+    return (
+        <div className="dashboard">
+            {/* <TopNav /> */}
+            <Header/>
+
             <div className="row flex-wrap-reverse">
                 <div className="col-lg-8">
                     <Left />

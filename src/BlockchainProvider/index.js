@@ -15,12 +15,12 @@ const BlockchainProvider = (props) => {
   const [contract, setContract] = useState();
   const [myData, setMyData] = useState();
   const [contractData, setContractData] = useState();
-  const [personalData, setPersonalData] = useState();
+  const [personalData, setPersonalData] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
-        console.log("fddf", window.tronWeb.defaultAddress.base58);
+        console.log("your wallet address", window.tronWeb.defaultAddress.base58);
         setAccount(window.tronWeb.defaultAddress.base58);
         clearInterval(interval)
         setTronWeb(window.tronWeb);
@@ -61,13 +61,16 @@ const BlockchainProvider = (props) => {
       contractData: contractData
     }))
 
+
   }, [contractData])
+
 
   useEffect(() => {
     initPersonalData(contract)
     props.dispatch(onPersonalDataLoaded({
       personalData: personalData
     }))
+
 
   }, [personalData])
 

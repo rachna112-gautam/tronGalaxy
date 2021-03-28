@@ -23,6 +23,22 @@ div#navbarSupportedContent {
 	object-fit: contain;
 }
 
+
+div#navbarSupportedContent {
+  justify-content: flex-end;
+}
+
+.icon-box{
+  height: 40px;
+  width: 41px;
+}
+
+.icon-box img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .top-navbar {
 	background-color: rgba(0, 0, 0, 0.4);
 	border-radius: 0.75rem;
@@ -38,9 +54,11 @@ div#navbarSupportedContent {
 }
 
 .navbar-logo {
+
 	display: inline-block;
 	height: 55px;
 	width: 200px;
+
 }
 
 .navbar-logo img {
@@ -59,12 +77,14 @@ div#navbarSupportedContent {
 }
 
 .top-info .address {
+
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	flex-wrap: wrap;
 	margin: 0.4rem;
 	color: #fff !important;
+
 }
 
 .address span {
@@ -78,6 +98,7 @@ div#navbarSupportedContent {
 }
 
 .btnn {
+
 	border: 2px solid cadetblue !important;
 	border-radius: 0.4rem;
 	padding: 0.5rem 1rem;
@@ -87,17 +108,20 @@ div#navbarSupportedContent {
 	font-weight: 600;
 	text-align: center;
 	overflow: hidden;
+
 }
 .header {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .logout .logout-btn {
+
 	background-color: #8a5dbd;
 	color: #fff;
 	font-size: 1.2rem;
 	font-weight: 600;
 	transition: all 0.3s ease;
+
 }
 
 .logout-btn:hover {
@@ -205,8 +229,10 @@ div#navbarSupportedContent {
 }
 .user i,
 .user span {
+
 	font-size: 2.2rem;
 	color: #fff !important;
+
 }
 
 .links {
@@ -283,4 +309,14 @@ th {
 Col {
 	justify-content: center;
 	margin-left: 20%;
+}
+
+
+@media (max-width: 500px){
+.navbar-nav {
+    border-top: 1px solid #1a1918 !important;
+    color: #fff;
+    z-index: 1;
+    margin-top: 5px;
+}
 }
