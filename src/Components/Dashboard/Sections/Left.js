@@ -1,7 +1,9 @@
 import React from 'react';
 import './../Dashboard.css';
 import Box from './Box';
-export default function Left() {
+import { connect } from "react-redux";
+export default function Left(props) {
+    console.log("personal data in left box is------->",props.personalData)
     return (
         <div className="right">
             <div className="row ml-0 mr-0">
@@ -29,3 +31,12 @@ export default function Left() {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+  return {
+    personalData: state.personalData,
+    contract: state.contract,
+    account: state.account,
+  };
+};
+
+ connect(mapStateToProps)(Left);
