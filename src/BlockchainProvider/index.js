@@ -60,8 +60,6 @@ const BlockchainProvider = (props) => {
     props.dispatch(onContractDataLoaded({
       contractData: contractData
     }))
-
-
   }, [contractData])
 
 
@@ -72,7 +70,7 @@ const BlockchainProvider = (props) => {
     }))
 
 
-  }, [personalData])
+  }, [contractData])
 
 
   const loadContract = async (_tronWeb, myWallet) => {
@@ -81,9 +79,6 @@ const BlockchainProvider = (props) => {
     setContract(_contract);
 
     props.dispatch(onContractLoaded(_contract));
-
-    // console.log("contract",_contract);
-
     await initContractData(_contract);
     await initPersonalData(_contract);
 
@@ -114,18 +109,18 @@ const BlockchainProvider = (props) => {
     }
     let contractBalance = beautifyNumber(await contract.methods.getContractBalance().call(), true);
     let totalUsers = (await contract.totalUsers().call()).toNumber();
-    let admin1Wallet = beautifyNumber(await contract.admin1Wallet().call(), true);
-    let admin2Wallet = beautifyNumber(await contract.admin2Wallet().call(), true);
+    // let admin1Wallet = beautifyNumber(await contract.admin1Wallet().call(), true);
+    // let admin2Wallet = beautifyNumber(await contract.admin2Wallet().call(), true);
 
     setContractData({
       contractBalance,
       totalUsers
     });
 
-    console.log("contract balance", contractBalance)
-    console.log("total users", totalUsers)
-    console.log("admin1", admin1Wallet)
-    console.log("admin2", admin2Wallet)
+    // console.log("contract balance", contractBalance)
+    // console.log("total users", totalUsers)
+    // console.log("admin1", admin1Wallet)
+    // console.log("admin2", admin2Wallet)
     props.dispatch(onContractDataLoaded(contractData));
     // console.log("contractData",contractData);
   };
@@ -135,6 +130,7 @@ const BlockchainProvider = (props) => {
     if (!contract) {
       return;
     }
+
     if (contract && account) {
       console.log("xxxx", contract)
       let res = await contract.users(account).call();

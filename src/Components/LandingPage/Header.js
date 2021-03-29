@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import logo from "../../assets/TronGalaxyPower.png";
 import {
   Collapse,
@@ -55,7 +55,9 @@ const Header = (props) => {
               </NavLink>
             </NavItem>
             <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
-              <NavLink href="/dashboard" className="btn more-btn">
+              <NavLink className="btn more-btn" onClick={() => {
+                enter()
+              }}>
                 Enter
               </NavLink>
             </NavItem>

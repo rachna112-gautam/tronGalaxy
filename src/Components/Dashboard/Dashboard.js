@@ -6,12 +6,12 @@ import Table from './Sections/Table';
 import Header from './Sections/Header';
 
 import { connect } from 'react-redux';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 const Dashboard = (props) => {
     const [contract, setContract] = useState();
     const [poolsPrice, setPoolsPrice] = useState([]);
-    const [personalData, setPersonalData] = useState();
+    // const [personalData, setPersonalData] = useState();
 
     console.log("props", props)
     useEffect(() => {
@@ -45,6 +45,7 @@ const Dashboard = (props) => {
         }
 
         let currPool = props.personalData.currPool;
+        console.log("Current Pool", currPool);
 
         await props.contract.methods.buyPool().send({ from: props.account, callValue: poolsPrice[currPool - 1] })
 
@@ -82,19 +83,18 @@ const Dashboard = (props) => {
                 </div>
             </div>
             <Row>
-                <Col xs="12" sm="12" md={{ size: 6, offset: 3 }} lg="12">
+                <Col xs="6" sm="6" lg="6">
                     <button className="btn more-btn" onClick={() => {
                         upgradePool();
                     }}>Upgrade Pool</button>
                 </Col>
-            </Row>
-            <Row>
-                <Col xs="12" sm="12" md={{ size: 6, offset: 3 }} lg="12">
+                <Col xs="6" sm="6" lg="6">
                     <button className="btn more-btn" onClick={() => {
                         enter();
                     }}> Enter</button>
                 </Col>
             </Row>
+
             <div className="row ">
                 <div className="col-lg-12">
                     <Table />
