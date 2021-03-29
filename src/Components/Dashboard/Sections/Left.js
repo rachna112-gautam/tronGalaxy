@@ -1,7 +1,7 @@
 import React from 'react';
 import './../Dashboard.css';
 import Box from './Box';
-export default function Left() {
+export default function Left(props) {
     return (
         <div className="right">
             <div className="row ml-0 mr-0">

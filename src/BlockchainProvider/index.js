@@ -75,7 +75,7 @@ const BlockchainProvider = (props) => {
 
   const loadContract = async (_tronWeb, myWallet) => {
     let _contract = await _tronWeb.contract().at(Config.CONTRACT_ADDRESS);
-    console.log("nwe", _contract);
+    // console.log("nwe", _contract);
     setContract(_contract);
 
     props.dispatch(onContractLoaded(_contract));
@@ -132,9 +132,9 @@ const BlockchainProvider = (props) => {
     }
 
     if (contract && account) {
-      console.log("xxxx", contract)
+      // console.log("xxxx", contract)
       let res = await contract.users(account).call();
-      console.log("res", res);
+      // console.log("res", res);
       let id = res.id.toNumber();
       let directReferrals = res.totalReferrals.toNumber();
       let referrerIncome = beautifyNumber(res.referralIncome, true);
@@ -161,16 +161,17 @@ const BlockchainProvider = (props) => {
         isExist
       });
 
-      console.log("data", id,
-        directReferrals,
-        referrerIncome,
-        currPool,
-        totalMembers,
-        releasedAmount,
-        earnedAmount,
-        cycles,
-        isExist)
+      // console.log("data", id,
+      //   directReferrals,
+      //   referrerIncome,
+      //   currPool,
+      //   totalMembers,
+      //   releasedAmount,
+      //   earnedAmount,
+      //   cycles,
+      //   isExist)
       props.dispatch(onPersonalDataLoaded(personalData));
+      // console.log("personalData", personalData)
 
 
     }

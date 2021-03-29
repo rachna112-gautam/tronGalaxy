@@ -11,9 +11,9 @@ import { Row, Col } from 'reactstrap';
 const Dashboard = (props) => {
     const [contract, setContract] = useState();
     const [poolsPrice, setPoolsPrice] = useState([]);
-    // const [personalData, setPersonalData] = useState();
 
-    console.log("props", props)
+
+    // console.log("props", props)
     useEffect(() => {
         setContract(contract);
         dollars();
@@ -75,7 +75,7 @@ const Dashboard = (props) => {
 
             <div className="row flex-wrap-reverse">
                 <div className="col-lg-8">
-                    <Left />
+                    <Left data={props.personalData} />
                 </div>
                 <div className="col-lg-4">
 
