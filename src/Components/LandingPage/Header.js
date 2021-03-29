@@ -15,11 +15,27 @@ import {
   NavbarText,
 } from "reactstrap";
 import './LandingPage.scss'
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [poolsPrice, setPoolsPrice] = useState([]);
 
   const toggle = () => setIsOpen(!isOpen);
+  const enter = async () => {
+    if (!props.contract) {
+      alert("contract not loaded");
+      return;
+    }
+
+    if (props.personalData.isExist) {
+      alert("user already exists");
+      return;
+    }
+    await props.contract.methods
+      .enterSystem("TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9")
+      .send({ from: props.account, callValue: poolsPrice[0] });
+  };
 
   return (
     <div>
@@ -40,7 +56,7 @@ const Header = () => {
             </NavItem>
             <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
               <NavLink href="/dashboard" className="btn more-btn">
-                Login
+                Enter
               </NavLink>
             </NavItem>
           </Nav>
@@ -49,4 +65,12 @@ const Header = () => {
     </div>
   );
 }
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    personalData: state.personalData,
+    contract: state.contract,
+    account: state.account,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

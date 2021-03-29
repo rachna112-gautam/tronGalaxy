@@ -151,16 +151,21 @@ div#navbarSupportedContent {
 
 .box-top {
 	display: flex;
-	justify-content: space-between;
+    justify-content: flex-end;
+       flex-direction: row-reverse;
 	align-items: baseline;
 }
 
 .box-top i {
 	font-size: 2rem;
 }
+.box-value{
+	margin-right: 1rem !important;
+}
 .box-top span {
 	font-size: 2rem;
 	font-weight: 600;
+
 }
 
 .box-btm {
