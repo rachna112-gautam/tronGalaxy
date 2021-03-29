@@ -44,7 +44,7 @@ const Dashboard = (props) => {
         }
 
         let currPool = props.personalData.currPool;
-
+        console.log("curr", currPool)
         await props.contract.methods.buyPool().send({ from: props.account, callValue: poolsPrice[currPool - 1] })
 
     }
