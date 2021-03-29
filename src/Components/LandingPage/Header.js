@@ -47,11 +47,11 @@ const Header = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar className="header-link">
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/components/">Contract</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
+                Total Balance
               </NavLink>
             </NavItem>
             <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
