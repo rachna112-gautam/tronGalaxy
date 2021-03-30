@@ -27,43 +27,43 @@ const BlockchainProvider = (props) => {
         loadData(window.tronWeb, window.tronWeb.defaultAddress.base58);
         // initContractData(contract)
         // initPersonalData(contract)
-
+        clearInterval(interval)
       }
     }, 5000)
 
   }, []);
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   props.dispatch(accountUpdate({
-  //     address: account,
-  //     myTronBal: myTronBal
-  //   }))
-  // }, [account])
+    props.dispatch(accountUpdate({
+      address: account,
+      myTronBal: myTronBal
+    }))
+  }, [account])
 
-  // useEffect(() => {
-  //   initPersonalData(contract)
-  //   props.dispatch(accountUpdate({
-  //     personalData: personalData
-  //   }))
-  // }, [account])
+  useEffect(() => {
+    initPersonalData(contract)
+    props.dispatch(accountUpdate({
+      personalData: personalData
+    }))
+  }, [account])
 
 
-  // useEffect(() => {
-  //   props.dispatch(accountUpdate({
-  //     address: account,
-  //     myTronBal: myTronBal
-  //   }))
-  // }, [myTronBal])
+  useEffect(() => {
+    props.dispatch(accountUpdate({
+      address: account,
+      myTronBal: myTronBal
+    }))
+  }, [myTronBal])
 
-  // useEffect(() => {
-  //   initContractData(contract)
-  //   props.dispatch(onContractDataLoaded({
-  //     contractData: contractData
-  //   }))
+  useEffect(() => {
+    initContractData(contract)
+    props.dispatch(onContractDataLoaded({
+      contractData: contractData
+    }))
 
-  // }, [account])
+  }, [account])
 
   useEffect(() => {
     initContractData(contract)

@@ -4,13 +4,13 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import BlockchainProvider from './BlockchainProvider/index';
+import Blockchain from './BlockchainProvider/blockchain';
 
 function App(props) {
 	console.log('contract info--->', props);
 	return (
 		<Router>
-			<BlockchainProvider />
+			<Blockchain />
 			<div className="App">
 				{/* <Dashboard /> */}
 

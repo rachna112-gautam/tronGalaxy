@@ -9,32 +9,10 @@ import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Logo from '../../assets/tron.png';
 const Dashboard = (props) => {
+
     const [contract, setContract] = useState();
-    const [poolsPrice, setPoolsPrice] = useState([]);
-    const [dollar, setDollar] = useState();
+
     
-    useEffect(() => {
-        setContract(contract);
-        dollars();
-    }, [props.account]);
-
-
-    const dollars = () => {
-        if (!props.contract || !props.account) {
-            return;
-        }
-        let dollars =
-            (props.contract.methods.dollars().call()).toNumber() / 10 ** 6;
-        // console.log("dollar", dollars);
-        setDollar(dollars);
-        let poolPrice = [];
-        for (let i = 0; i < 20; i++) {
-            let res = (props.contract.poolsPrice(i).call()).toNumber();
-            poolPrice[i] = res;
-        }
-        setPoolsPrice(poolPrice);
-        // console.log("pool price", poolPrice);
-    };
 
     const upgradePool = async () => {
         if (!props.personalData || !props.account) {
@@ -42,12 +20,12 @@ const Dashboard = (props) => {
         }
 
         let currPool = props.personalData.currPool;
-        // console.log("Current Pool", currPool);
-        let hold = props.personalData.holdAmount * 10 ** 6;
-        console.log("hold..", hold)
+        console.log("personalDataaaaaaaaa", props.personalData);
+        let hold = props.personalData.holdAmount;
+        console.log("hold..", typeof (props.personalData.currPool))
         await props.contract.methods
             .buyPool()
-            .send({ from: props.account, callValue: poolsPrice[currPool] - hold });
+            .send({ from: props.account, callValue: props.personalData.poolPrice[currPool] - hold });
     };
 
     const enter = async () => {
@@ -167,7 +145,6 @@ const mapStateToProps = (state) => {
         personalData: state.personalData,
         contract: state.contract,
         account: state.account,
-        contractData: state.contractData
     };
 };
 
