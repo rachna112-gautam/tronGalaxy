@@ -22,13 +22,16 @@ const BlockchainProvider = (props) => {
       if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
         console.log("your wallet address", window.tronWeb.defaultAddress.base58);
         setAccount(window.tronWeb.defaultAddress.base58);
-        clearInterval(interval)
+
         setTronWeb(window.tronWeb);
         loadData(window.tronWeb, window.tronWeb.defaultAddress.base58);
-        // initPersonalData()
+        // initContractData()
+
       }
-    }, 1000)
+    }, 5000)
+
   }, []);
+
 
   useEffect(() => {
 
@@ -43,8 +46,6 @@ const BlockchainProvider = (props) => {
     props.dispatch(accountUpdate({
       personalData: personalData
     }))
-
-
   }, [account])
 
 
@@ -54,6 +55,14 @@ const BlockchainProvider = (props) => {
       myTronBal: myTronBal
     }))
   }, [myTronBal])
+
+  useEffect(() => {
+    initContractData(contract)
+    props.dispatch(onContractDataLoaded({
+      contractData: contractData
+    }))
+
+  }, [account])
 
   useEffect(() => {
     initContractData(contract)
@@ -142,12 +151,12 @@ const BlockchainProvider = (props) => {
       let earnedAmount = beautifyNumber(res.extraEarned, true);
       let cycles = res.cycles.toNumber();
       let isExist = res.isExist;
-
+      let prevHoldAmount = beautifyNumber(res.prevHold, true);
       let totalMembers = (await contract.totalMembers(account).call()).toNumber();
-      // let holdAmount = parseInt(await contract.methods.getHoldAmount(account).call());
+      let holdAmount = beautifyNumber((await contract.methods.getHoldAmount(account).call()).amount, true);
       let releasedAmount = beautifyNumber(await contract.releasedAmount(account).call(), true);
 
-
+      console.log("holf", holdAmount)
 
       setPersonalData({
         id,
@@ -157,6 +166,8 @@ const BlockchainProvider = (props) => {
         totalMembers,
         releasedAmount,
         earnedAmount,
+        prevHoldAmount,
+        holdAmount,
         cycles,
         isExist
       });

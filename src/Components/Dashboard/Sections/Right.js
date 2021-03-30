@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from "react-redux";
 
-export default function Right() {
+const Right = (props) => {
+
+
     return (
         <div className="right">
             <div className="user">
                 <i className="fa fa-id-card"></i>
-                <span>33</span>
+                <span>{props.personalData ? props.personalData.id : "-"}</span>
             </div>
             <div className="user">
                 <i className="fa fa-users"></i>
-                <span>330</span>
+                <span>{props.contractData ? props.contractData.totalUsers : "-"}</span>
             </div>
 
             <div className="links mt-4">
                 <h2>My Wallet</h2>
-                <div className="aff-link">https://trongalaxypower</div>
+                <div className="aff-link">{props.account ? props.account.address : "0x"}</div>
             </div>
             <div className="links">
                 <h2>Affiliate Wallet</h2>
@@ -23,3 +26,11 @@ export default function Right() {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        personalData: state.personalData,
+        contractData: state.contractData,
+        account: state.account,
+    };
+};
+export default connect(mapStateToProps)(Right)
