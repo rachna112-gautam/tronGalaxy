@@ -40,7 +40,7 @@ const Dashboard = (props) => {
       return;
     }
 
-    if (props.personalData.isExist) {
+    if (props.personalData.personalData.isExist) {
       alert("user already exist");
       return;
     }

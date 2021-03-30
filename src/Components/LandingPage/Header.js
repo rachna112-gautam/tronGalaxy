@@ -37,7 +37,7 @@ const Header = (props) => {
       return;
     }
 
-    await props.contract.methods
+    await props.contract.contract.methods
       .enterSystem(Config.ADMIN_WALLET)
       .send({ from: props.account, callValue: props.personalData.poolPrice[0] });
   };
@@ -59,13 +59,13 @@ const Header = (props) => {
                 {props.personalData ? props.personalData.contractBalance : "-"}
               </NavLink>
             </NavItem>
-            <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
+            {/* <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
               <NavLink className="btn more-btn" onClick={() => {
                 enter()
               }}>
                 Enter
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
       </Navbar>
