@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from "react-redux"
 
 export default function Table() {
     return (
@@ -45,3 +46,11 @@ export default function Table() {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        personalData: state.personalData,
+        contract: state.contract,
+        account: state.account,
+    };
+};
+connect(mapStateToProps)(Table);

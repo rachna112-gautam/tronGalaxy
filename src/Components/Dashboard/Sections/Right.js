@@ -17,7 +17,7 @@ const Right = (props) => {
 
             <div className="links mt-4">
                 <h2>My Wallet</h2>
-                <div className="aff-link">https://trongalaxypower</div>
+                <div className="aff-link">{props.account ? props.account.address : "0x"}</div>
             </div>
             <div className="links">
                 <h2>Affiliate Wallet</h2>

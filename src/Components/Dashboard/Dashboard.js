@@ -11,39 +11,38 @@ import { Row, Col } from "reactstrap";
 const Dashboard = (props) => {
     const [contract, setContract] = useState();
     const [poolsPrice, setPoolsPrice] = useState([]);
+    const [dollar, setDollar] = useState();
 
     useEffect(() => {
         setContract(contract);
         dollars();
-        console.log("dashboard use effect")
     }, [props.account]);
 
 
     const dollars = async () => {
         if (!props.contract || !props.account) {
-            alert("contract not loaded");
             return;
         }
         let dollars =
             (await props.contract.methods.dollars().call()).toNumber() / 10 ** 6;
-        console.log("dollar", dollars);
+        // console.log("dollar", dollars);
+        setDollar(dollars);
         let poolPrice = [];
         for (let i = 0; i < 20; i++) {
             let res = (await props.contract.poolsPrice(i).call()).toNumber();
             poolPrice[i] = res;
         }
         setPoolsPrice(poolPrice);
-        console.log("pool price", poolPrice);
+        // console.log("pool price", poolPrice);
     };
 
     const upgradePool = async () => {
         if (!props.personalData || !props.account) {
-            alert("contract not loaded");
             return;
         }
 
         let currPool = props.personalData.currPool;
-        console.log("Current Pool", currPool);
+        // console.log("Current Pool", currPool);
 
         await props.contract.methods
             .buyPool()
@@ -52,12 +51,12 @@ const Dashboard = (props) => {
 
     const enter = async () => {
         if (!props.contract || !props.personalData || !props.account) {
-            alert("contract not loaded");
+            alert("content not loaded")
             return;
         }
 
         if (props.personalData.isExist) {
-            alert("user already exists");
+            alert("user already exist")
             return;
         }
         await props.contract.methods
