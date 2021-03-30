@@ -20,12 +20,13 @@ function rootReducer(state = initialState, action) {
       });
 
     case CONTRACT_LOADED:
+      // console.log("contract in reducer is------->",action.payload)
       return Object.assign({}, state, {
         contract: action.payload,
       });
 
     case ON_PERSONAL_DATA_LOADED:
-      console.log("actu", action.payload)
+      // console.log("actu", action.payload)
       return Object.assign({}, state, {
         personalData: action.payload,
       });

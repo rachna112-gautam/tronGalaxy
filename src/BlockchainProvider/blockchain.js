@@ -65,6 +65,11 @@ const Blockchain = (props) => {
         }))
     }, [personalData])
 
+    useEffect(()=>{
+props.dispatch(onContractLoaded({
+    contract
+}));
+    },[contract])
 
     const loadContract = async (_tronWeb, myWallet) => {
         let _contract = await _tronWeb.contract().at(Config.CONTRACT_ADDRESS);
