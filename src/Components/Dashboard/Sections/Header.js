@@ -23,11 +23,11 @@ export default function Header(props) {
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item contract-bal ">
             Contract Balance
-            <a class="nav-link" href="#" className="balance-btn">
+            <span className="ml-3">
               {props.contractData ? props.contractData.contractBalance : 0}
-            </a>
+            </span>
           </li>
 
         </ul>

@@ -7,7 +7,7 @@ import Header from "./Sections/Header";
 
 import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
-
+import Logo from '../../assets/tron.png';
 const Dashboard = (props) => {
     const [contract, setContract] = useState();
     const [poolsPrice, setPoolsPrice] = useState([]);
@@ -66,6 +66,60 @@ const Dashboard = (props) => {
 
     return (
         <div className="dashboard">
+            <div className="modal fade" id="upgradePoolModal" tabindex="-1" role="dialog" aria-labelledby="upgradePoolModalTitle" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLongTitle">Upgrade Pool</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div >
+                                <i className="fa fa-dollar"></i>
+                                <span className="ml-3 font-weight-bold">200</span>
+                            </div>
+                            <div className="d-flex">
+                                <div className="icon-box"><img src={Logo} alt="dhb" /></div>
+                                <span className="ml-3 font-weight-bold">20</span>
+                            </div>
+
+                        </div>
+                        <div className="modal-btn">
+                            <button type="button" onClick={() => { upgradePool(); }} className="btn btn-upgrade">Upgrade Pool</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade" id="enterModal" tabindex="-1" role="dialog" aria-labelledby="enterModalTitle" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLongTitle">Enter Modal</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div >
+                                <i className="fa fa-dollar"></i>
+                                <span className="ml-3 font-weight-bold">200</span>
+                            </div>
+                            <div className="d-flex">
+                                <div className="icon-box"><img src={Logo} alt="dhb" /></div>
+                                <span className="ml-3 font-weight-bold">20</span>
+                            </div>
+
+                        </div>
+                        <div className="modal-btn">
+                            <button type="button" onClick={() => { enter(); }} className="btn btn-upgrade">Enter</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             <Header />
 
             <div className="row flex-wrap-reverse">
@@ -80,9 +134,8 @@ const Dashboard = (props) => {
                 <Col xs="6" sm="6" lg="6">
                     <button
                         className="btn more-btn"
-                        onClick={() => {
-                            upgradePool();
-                        }}
+
+                        data-toggle="modal" data-target="#upgradePoolModal"
                     >
                         Upgrade Pool
           </button>
@@ -90,9 +143,7 @@ const Dashboard = (props) => {
                 <Col xs="6" sm="6" lg="6">
                     <button
                         className="btn more-btn"
-                        onClick={() => {
-                            enter();
-                        }}
+                        data-toggle="modal" data-target="#enterModal"
                     >
                         {" "}
             Enter

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './../Dashboard.css';
 import Box from './Box';
 import { connect } from "react-redux";
