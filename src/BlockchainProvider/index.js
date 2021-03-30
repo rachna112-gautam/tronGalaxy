@@ -25,8 +25,9 @@ const BlockchainProvider = (props) => {
 
         setTronWeb(window.tronWeb);
         loadData(window.tronWeb, window.tronWeb.defaultAddress.base58);
-        // initContractData()
-
+        // initContractData(contract)
+        // initPersonalData(contract)
+        clearInterval(interval)
       }
     }, 5000)
 
@@ -79,6 +80,12 @@ const BlockchainProvider = (props) => {
     }))
   }, [contract])
 
+  // useEffect(() => {
+  //   initPersonalData(contract)
+  //   props.dispatch(onPersonalDataLoaded({
+  //     personalData: personalData
+  //   }))
+  // }, [contractData])
 
   const loadContract = async (_tronWeb, myWallet) => {
     let _contract = await _tronWeb.contract().at(Config.CONTRACT_ADDRESS);
@@ -156,7 +163,7 @@ const BlockchainProvider = (props) => {
       let holdAmount = beautifyNumber((await contract.methods.getHoldAmount(account).call()).amount, true);
       let releasedAmount = beautifyNumber(await contract.releasedAmount(account).call(), true);
 
-      console.log("holf", holdAmount)
+
 
       setPersonalData({
         id,

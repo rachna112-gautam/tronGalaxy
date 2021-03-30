@@ -22,30 +22,13 @@ import { connect } from "react-redux";
 const Header = (props) => {
   const [contract, setContract] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const [poolsPrice, setPoolsPrice] = useState([]);
+
 
   const toggle = () => setIsOpen(!isOpen);
-  useEffect(() => {
-    setContract(contract);
-    dollars();
-  }, [props.account]);
-  const dollars = async () => {
-    if (!props.contract || !props.account) {
-      return;
-    }
-    let dollars =
-      (await props.contract.methods.dollars().call()).toNumber() / 10 ** 6;
-    // console.log("dollar", dollars);
-    let poolPrice = [];
-    for (let i = 0; i < 20; i++) {
-      let res = (await props.contract.poolsPrice(i).call()).toNumber();
-      poolPrice[i] = res;
-    }
-    setPoolsPrice(poolPrice);
-    // console.log("pool price", poolPrice);
-  };
+
   const enter = async () => {
-    if (!props.contract || !props.account) {
+    if (!props.personalData) {
+      alert("not loaded")
       return;
     }
 
@@ -53,9 +36,10 @@ const Header = (props) => {
       alert("user already exist")
       return;
     }
+
     await props.contract.methods
-      .enterSystem("TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9")
-      .send({ from: props.account, callValue: poolsPrice[0] });
+      .enterSystem(Config.ADMIN_WALLET)
+      .send({ from: props.account, callValue: props.personalData.poolPrice[0] });
   };
 
   return (
@@ -72,7 +56,7 @@ const Header = (props) => {
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">
-                {props.contractData ? props.contractData.contractBalance : "-"}
+                {props.personalData ? props.personalData.contractBalance : "-"}
               </NavLink>
             </NavItem>
             <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
@@ -93,7 +77,6 @@ const mapStateToProps = (state) => {
     personalData: state.personalData,
     contract: state.contract,
     account: state.account,
-    contractData: state.contractData
   };
 };
 

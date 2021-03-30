@@ -9,32 +9,10 @@ import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Logo from '../../assets/tron.png';
 const Dashboard = (props) => {
+
     const [contract, setContract] = useState();
-    const [poolsPrice, setPoolsPrice] = useState([]);
-    const [dollar, setDollar] = useState();
 
-    useEffect(() => {
-        setContract(contract);
-        dollars();
-    }, [props.account]);
-
-
-    const dollars = async () => {
-        if (!props.contract || !props.account) {
-            return;
-        }
-        let dollars =
-            (await props.contract.methods.dollars().call()).toNumber() / 10 ** 6;
-        // console.log("dollar", dollars);
-        setDollar(dollars);
-        let poolPrice = [];
-        for (let i = 0; i < 20; i++) {
-            let res = (await props.contract.poolsPrice(i).call()).toNumber();
-            poolPrice[i] = res;
-        }
-        setPoolsPrice(poolPrice);
-        // console.log("pool price", poolPrice);
-    };
+    
 
     const upgradePool = async () => {
         if (!props.personalData || !props.account) {
@@ -42,11 +20,12 @@ const Dashboard = (props) => {
         }
 
         let currPool = props.personalData.currPool;
-        // console.log("Current Pool", currPool);
-
+        console.log("personalDataaaaaaaaa", props.personalData);
+        let hold = props.personalData.holdAmount;
+        console.log("hold..", typeof (props.personalData.currPool))
         await props.contract.methods
             .buyPool()
-            .send({ from: props.account, callValue: poolsPrice[currPool] });
+            .send({ from: props.account, callValue: props.personalData.poolPrice[currPool] - hold });
     };
 
     const enter = async () => {
@@ -59,9 +38,10 @@ const Dashboard = (props) => {
             alert("user already exist")
             return;
         }
+
         await props.contract.methods
             .enterSystem("TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9")
-            .send({ from: props.account, callValue: poolsPrice[0] });
+            .send({ from: props.account, callValue: 30000000 });
     };
 
     return (
@@ -114,7 +94,7 @@ const Dashboard = (props) => {
 
                         </div>
                         <div className="modal-btn">
-                            <button type="button" onClick={() => { enter(); }} className="btn btn-upgrade">Enter</button>
+                            <button type="button" onClick={() => { enter() }} className="btn btn-upgrade">Enter</button>
                         </div>
 
                     </div>
@@ -165,7 +145,6 @@ const mapStateToProps = (state) => {
         personalData: state.personalData,
         contract: state.contract,
         account: state.account,
-        contractData: state.contractData
     };
 };
 
