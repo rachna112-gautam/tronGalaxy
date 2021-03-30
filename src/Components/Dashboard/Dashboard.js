@@ -13,6 +13,7 @@ const Dashboard = (props) => {
 
   
   console.log("contract in dashboard ------>",props.contract);
+  console.log("account in dashboard----->",props.account);
 
   const upgradePool = async () => {
     if (!props.personalData || !props.account) {
@@ -34,7 +35,7 @@ const Dashboard = (props) => {
   };
 
   const enter = async () => {
-    if (!props.contract || !props.personalData || !props.account) {
+    if (!props.contract.contract || !props.personalData.personalData || !props.account) {
       alert("content not loaded");
       return;
     }
@@ -44,7 +45,7 @@ const Dashboard = (props) => {
       return;
     }
 
-    await props.contract.methods
+    await props.contract.contract.methods
       .enterSystem("TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9")
       .send({ from: props.account, callValue: 30000000 });
   };
