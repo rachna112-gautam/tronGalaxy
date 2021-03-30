@@ -10,26 +10,59 @@ import { Row, Col } from "reactstrap";
 import Logo from "../../assets/tron.png";
 const Dashboard = (props) => {
   const [contract, setContract] = useState();
+//   const [directReferrals,setDirectReferrals]=useState();
+//   const [referrerIncome, setReferrerIncome] = useState();
+//   const [currPool, setCurrPool] = useState();
+//   const [totalMembers, setTotalMembers] = useState();
+//   const [holdAmount, setHoldAmount] = useState();
+//   const [unreleasedAmount,setUnreleasedAmount]=useState();
+
 
   
   console.log("contract in dashboard ------>",props.contract);
   console.log("account in dashboard----->",props.account);
+  console.log("personalDataaaaaaaaa", props.personalData);
+  
+//   useEffect(() => {
+//       personalData()
+//   }, [props.personalData])
+
+//   const personalData=async()=>{
+//       if (!props.personalData || !props.account) {
+//         return;
+//       }
+//       let currPool = props.personalData.personalData.currPool;
+//       setCurrPool(currPool);
+//       let hold = props.personalData.personalData.holdAmount;
+//       setHoldAmount(hold);
+//       let directReferrals=props.personalData.personalData.directReferrals;
+//       setDirectReferrals(directReferrals)
+//       let referrerIncome = props.personalData.personalData.referrerIncome;
+//       setReferrerIncome(referrerIncome);
+//       let totalMembers = props.personalData.personalData.totalMembers;
+//       setTotalMembers(totalMembers);
+//       let unreleasedAmount = props.personalData.personalData.releasedAmount;
+//       setUnreleasedAmount(unreleasedAmount)
+      
+//   }
 
   const upgradePool = async () => {
     if (!props.personalData || !props.account) {
       return;
     }
+    
 
-    let currPool = props.personalData.currPool;
+    let currPool = props.personalData.personalData.currPool;
     console.log("personalDataaaaaaaaa", props.personalData);
     let hold = props.personalData.personalData.holdAmount;
+    
     console.log("hold amount is------->",hold)
     
     // console.log("hold..", typeof props.personalData.currPool);
     await props.contract.contract.methods
       .buyPool()
       .send({
-        from: props.account,
+        from: props.account.address,
         callValue: props.personalData.personalData.poolPrice[currPool] - hold,
       });
   };
@@ -161,16 +194,14 @@ const Dashboard = (props) => {
         </div>
       </div>
       <Row>
-        <Col xs="6" sm="6" lg="6">
+        <Col xs="6" sm="6" lg="12" className="upgrade-pool">
           <button
-            className="btn more-btn"
+            className="btn more-btn upgrade-pool-btn"
             data-toggle="modal"
             data-target="#upgradePoolModal"
           >
             Upgrade Pool
           </button>
-        </Col>
-        <Col xs="6" sm="6" lg="6">
           <button
             className="btn more-btn"
             data-toggle="modal"
@@ -180,6 +211,7 @@ const Dashboard = (props) => {
             Enter
           </button>
         </Col>
+       
       </Row>
 
       <div className="row ">
