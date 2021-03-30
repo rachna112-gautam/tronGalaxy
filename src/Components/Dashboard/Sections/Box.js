@@ -8,7 +8,7 @@ export default function Box(props) {
                 <div className="box-top">
                     {props.icon === "0" ? <div className="icon-box"><img src={Logo} alt="dhb" /></div> : <i className={`fa fa-${props.icon}`}></i>}
 
-                    <span>{props.value}</span>
+                    <span className="box-value">{props.value}</span>
                 </div>
             </div>
             <div className="box-btm">

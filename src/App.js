@@ -44,7 +44,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
 	return {
-		contract: state.account
+		contract: state.account,
+		personalData: state.personalData
 	};
 };
 export default connect(mapStateToProps)(App);
