@@ -44,7 +44,7 @@ const JoinUs = () => {
             <img src="img/svg/join-bottom.svg" className="arrow-img" alt="" />
           </div>
           <div className="row howitworks">
-            <div className="col-6 col-md-6 col-lg-3 col-sm-6 how-boxx">
+            <div className="col-12 col-md-12 col-lg-3 col-sm-12 how-boxx">
               <div className="contribution-c-wapper has-arrow-left-lg has-arrow-bottom-md has-arrow-down-sm">
                 {/* Content */}
                 <div
@@ -60,7 +60,7 @@ const JoinUs = () => {
                 </div>
               </div>
             </div>
-            <div className="col-6 col-md-6 col-lg-3 col-sm-6 how-boxx">
+            <div className="col-12 col-md-12 col-lg-3 col-sm-12 how-boxx">
               <div className="contribution-c-wapper has-arrow-left-lg has-arrow-left-md has-arrow-down-sm">
                 <div
                   className="service_single_content text-center mb-30 fadeInUp"
@@ -77,7 +77,7 @@ const JoinUs = () => {
                 </div>
               </div>
             </div>
-            <div className="col-6 col-md-6 col-lg-3 col-sm-6 how-boxx">
+            <div className="col-12 col-md-12 col-lg-3 col-sm-12 how-boxx">
               <div className="contribution-c-wapper ">
                 <div
                   className="service_single_content text-center mb-30 fadeInUp"

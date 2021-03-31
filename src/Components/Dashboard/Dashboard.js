@@ -215,7 +215,7 @@ const Dashboard = (props) => {
                 </div>
             </div>
             <Row>
-                <Col xs="6" sm="6" lg="12" className="upgrade-pool">
+                <Col xs="12" sm="12" lg="12" className="upgrade-pool">
                     <button
                         className="btn more-btn upgrade-pool-btn"
                         data-toggle="modal"
