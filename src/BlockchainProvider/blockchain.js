@@ -14,6 +14,7 @@ const Blockchain = (props) => {
     const [contract, setContract] = useState();
     const [personalData, setPersonalData] = useState({});
     const [poolsPrice, setPoolsPrice] = useState([]);
+    const [globalLoading, setGlobalLoading] = useState(true);
 
     useEffect(() => {
         if (!tronWeb && loading) {
@@ -30,6 +31,9 @@ const Blockchain = (props) => {
         }
     }, []);
 
+    // useEffect(() => {
+    //     window.location.reload();
+    // }, [window.tronWeb])
 
     useEffect(() => {
         if (!contract && tronWeb) {
@@ -65,11 +69,11 @@ const Blockchain = (props) => {
         }))
     }, [personalData])
 
-    useEffect(()=>{
-props.dispatch(onContractLoaded({
-    contract
-}));
-    },[contract])
+    useEffect(() => {
+        props.dispatch(onContractLoaded({
+            contract
+        }));
+    }, [contract])
 
     const loadContract = async (_tronWeb, myWallet) => {
         let _contract = await _tronWeb.contract().at(Config.CONTRACT_ADDRESS);
@@ -111,7 +115,17 @@ props.dispatch(onContractLoaded({
             let res = (await contract.poolsPrice(i).call()).toNumber();
             poolPrice[i] = res;
         }
+        let history = [];
+        let length = (await contract.historyLength(account).call()).toNumber();
+        for (let i = 0; i < length; i++) {
+            let hist = await contract.getHistory(account, i).call();
+            history.push(hist);
+        }
+
+
+        console.log("history", history)
         console.log("pool", poolPrice)
+        setGlobalLoading(false)
         setPersonalData({
             id,
             directReferrals,
@@ -127,7 +141,9 @@ props.dispatch(onContractLoaded({
             contractBalance,
             totalUsers,
             poolPrice,
-            dollars
+            dollars,
+            globalLoading,
+            history
         });
 
     };

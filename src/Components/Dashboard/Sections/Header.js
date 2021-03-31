@@ -4,6 +4,7 @@ import '../Dashboard.css'
 import { connect } from "react-redux"
 
 export default function Header(props) {
+  console.log("contract balance in header", props.personalData)
   return (
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-logo" href="/" aria-label="Tron Galaxy Power">
@@ -26,7 +27,7 @@ export default function Header(props) {
           <li class="nav-item contract-bal ">
             Contract Balance
             <span className="ml-3">
-              {props.contractData ? props.contractData.contractBalance : 0}
+              {props.personalData ? props.personalData.contractBalance : 0}
             </span>
           </li>
 

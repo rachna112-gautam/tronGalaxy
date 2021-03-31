@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import {
   ACCOUNT_UPDATE,
   CONTRACT_LOADED,
@@ -8,7 +7,7 @@ import {
 const initialState = {
   account: null,
   blockchainClient: null,
-  myData: {},
+  myData: {}
 };
 
 function rootReducer(state = initialState, action) {
@@ -26,7 +25,7 @@ function rootReducer(state = initialState, action) {
       });
 
     case ON_PERSONAL_DATA_LOADED:
-      // console.log("actu", action.payload)
+      console.log("personalData--->", action.payload)
       return Object.assign({}, state, {
         personalData: action.payload,
       });

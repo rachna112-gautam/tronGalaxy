@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux"
 
-export default function Table() {
+export default function Table(props) {
+    const [history, setHistory] = useState({})
+    useEffect(() => {
+        if (props.personalData) {
+            setHistory(props.personalData.history);
+        }
+
+    }, [])
+
     return (
+
         <div className="btm-table">
             <h4>History</h4>
+            {console.log("hi", history)}
             <div className="table-responsive">
                 <table class="table table-borderless">
                     <thead>
@@ -49,8 +59,6 @@ export default function Table() {
 const mapStateToProps = (state) => {
     return {
         personalData: state.personalData,
-        contract: state.contract,
-        account: state.account,
     };
 };
 connect(mapStateToProps)(Table);
