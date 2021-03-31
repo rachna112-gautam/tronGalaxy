@@ -31,6 +31,9 @@ const Blockchain = (props) => {
         }
     }, []);
 
+    // useEffect(() => {
+    //     window.location.reload();
+    // }, [window.tronWeb])
 
     useEffect(() => {
         if (!contract && tronWeb) {

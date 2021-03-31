@@ -22,6 +22,7 @@ import { connect } from "react-redux";
 const Header = (props) => {
   const [contract, setContract] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  // console.log("contract balance in header--->", props.personalData.personalData.contractBalance)
 
 
   const toggle = () => setIsOpen(!isOpen);
@@ -51,14 +52,13 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} navbar-dark />
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar className="header-link">
-            <NavItem>
-              <NavLink href={`https://shasta.tronscan.org/#/contract/${Config.CONTRACT_ADDRESS}`}>{Config.CONTRACT_ADDRESS}</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                {props.personalData ? props.personalData.contractBalance : "-"}
+            <NavItem className="wallet-info">
+              <NavLink href={!props.account ? `https://shasta.tronscan.org/#/address/` : `https://shasta.tronscan.org/#/address/${props.account.address}`} >{props.account ? props.account.address : '-'}
+                <span className="ml-3"> {props.personalData ? props.personalData.personalData.contractBalance : "-"}</span>
               </NavLink>
             </NavItem>
+
+
             {/* <NavItem className="dream-btn-group fadeInUp login" data-wow-delay="0.4s">
               <NavLink className="btn more-btn" onClick={() => {
                 enter()

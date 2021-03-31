@@ -1,64 +1,88 @@
-.logo{
-    width: 30% !important;
+.logo {
+  width: 30% !important;
 }
-.welcome-content{
-        display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.welcome-heading{
-       font-size: 78px !important;
-       text-align: center;
+.welcome-heading {
+  font-size: 78px !important;
+  text-align: center;
 }
-.aboutus-heading{
-    font-weight: 700;
-    color: white;
-        font-size: 17px !important;
+.aboutus-heading {
+  font-weight: 700;
+  color: white;
+  font-size: 17px !important;
 }
-.heading{
-    background-color: #fbfbfbad !important;
+.heading {
+  background-color: #fbfbfbad !important;
 }
-.logo{
-    width: 130px !important;
+.logo {
+  width: 130px !important;
 }
-.navbar-dark .navbar-toggler, .navbar-white .navbar-toggler, .navbar-cyan .navbar-toggler{
-    background-color: transparent !important;
+.navbar-dark .navbar-toggler,
+.navbar-white .navbar-toggler,
+.navbar-cyan .navbar-toggler {
+  background-color: transparent !important;
 }
-@media(max-width:600px){
-    .hero-section{
-        display: contents !important;
-    }
-    .welcome-heading{
-        font-size: 36px !important;
-    }
+@media (max-width: 600px) {
+  .hero-section {
+    display: contents !important;
+  }
+  .welcome-heading {
+    font-size: 36px !important;
+  }
 }
-.more-btn{
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
+.more-btn {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  color: white !important;
+  font-size: larger !important;
+}
+.header-link {
+  & a {
     color: white !important;
-    font-size: larger !important;
-}
-.header-link{
-    & a{
-        color: white !important;
     font-size: large !important;
     font-weight: 600 !important;
-    }
+  }
 }
-.navbar-collapse{
-        justify-content: flex-end;
+.navbar-collapse {
+  justify-content: flex-end;
 }
-.login{
-        margin-top: 7px;
-    margin-left: 25px;
+.login {
+  margin-top: 7px;
+  margin-left: 25px;
 }
-.pools-row{
-        justify-content: center;
+.pools-row {
+  justify-content: center;
 }
-.hero-section{
-        display: flex;
-    justify-content: center;
-    align-items: baseline;
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  min-width: none !important;
+}
+
+.howitworks {
+  justify-content: space-evenly;
+  margin-top: 3rem;
+  padding: 1rem;
+}
+
+.join-us .service_single_content {
+  background: none;
+}
+
+.how-boxx {
+  background: #030239 !important;
+  margin: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.wallet-info {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0rem 1rem;
 }
