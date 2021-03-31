@@ -1,21 +1,21 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './../Dashboard.css';
 import Box from './Box';
 import { connect } from "react-redux";
 const Left = (props) => {
-    const [personalData,setPersonalData]=useState()
+    const [personalData, setPersonalData] = useState()
 
     useEffect(() => {
         personaldata()
     }, [props.personalData])
-    const personaldata=async()=>{
-        if(!props.personalData){
+    const personaldata = async () => {
+        if (!props.personalData) {
             return
         }
-     let personalData = props.personalData.personalData;
-     setPersonalData(personalData);
+        let personalData = props.personalData.personalData;
+        setPersonalData(personalData);
     }
-    
+
 
     return (
         <div className="right">
@@ -38,7 +38,7 @@ const Left = (props) => {
                 </div>
 
                 <div className="col-lg-4 col-sm-6 col-md-6">
-                    <Box title="Unreleased Amount" value={personalData ? personalData.prevHoldAmount : "-"} icon="users" number="6" />
+                    <Box title="Cycles" value={personalData ? personalData.cycles : "-"} icon="users" number="6" />
                 </div>
             </div>
         </div>

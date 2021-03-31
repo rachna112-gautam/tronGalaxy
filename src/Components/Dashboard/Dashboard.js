@@ -37,10 +37,6 @@ const Dashboard = (props) => {
     console.log("account in dashboard----->", props.account);
     console.log("personalDataaaaaaaaa", props.personalData);
 
-
-
-
-
     const getPoolPrice = () => {
         if (!props.personalData || !props.account) {
             return;
