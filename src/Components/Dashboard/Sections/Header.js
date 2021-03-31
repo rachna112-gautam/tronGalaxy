@@ -3,15 +3,15 @@ import Logo from "./../../../assets/TronGalaxyPower.png";
 import '../Dashboard.css'
 import { connect } from "react-redux"
 
-export default function Header(props) {
-  const [contractBalance,setContractBalance]=useState(0)
+ function Header(props) {
+  const [personalData,setPersonalData]=useState(0)
 
   useEffect(() => {
-    console.log("contract data in header is---->",props.contractData)
-  }, [props.contractData])
+    setPersonalData(props.personalData)
+    
+  }, [props.personalData])
+  
 
-
-  console.log("contract balance is----->",props.contractData)
   return (
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-logo" href="/" aria-label="Tron Galaxy Power">
@@ -34,12 +34,12 @@ export default function Header(props) {
           <li class="nav-item contract-bal ">
             Contract Balance
             <span className="ml-3">
-              {props.contractData ? props.contractData.contractBalance : 0}
+              {props.personalData
+                ? props.personalData.personalData.contractBalance
+                : "-"}
             </span>
           </li>
-
         </ul>
-
       </div>
     </nav>
   );
@@ -47,9 +47,9 @@ export default function Header(props) {
 const mapStateToProps = (state) => {
   return {
     personalData: state.personalData,
-    contractData: state.contractData,
+    
     account: state.account,
   };
 };
 
-connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header);

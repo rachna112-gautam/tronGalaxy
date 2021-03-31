@@ -24,9 +24,9 @@ const LandingPage = () => {
       <JoinUs />
       {/* ##### About Us Area Start ##### */}
       {/* //pools starting */}
-      <Pools/>
 
-    
+
+
 
       <section className="about-us-area section-padding-0-100 clearfix">
         <div className="container">
@@ -56,13 +56,7 @@ const LandingPage = () => {
                   aliquid alias beatae reprehenderit incidunt iusto
                   laboriosam.
                    </p>
-                <a
-                  className="btn more-btn mt-30 fadeInUp"
-                  data-wow-delay="0.6s"
-                  href="index.html#"
-                >
-                  Read More
-                   </a>
+
               </div>
             </div>
             <img
@@ -82,8 +76,8 @@ const LandingPage = () => {
         </div>
       </section>
       {/* ##### About Us Area End ##### */}
-    
-      
+
+
       <div className="faq-timeline-area section-padding-0-85" id="faq">
         <div className="container">
           <div className="section-heading text-center">
@@ -174,7 +168,7 @@ const LandingPage = () => {
       </div>
       {/* ##### FAQ & Timeline Area End ##### */}
       {/* ##### Team Area Start ##### */}
-     
+
       <footer
         className="footer-area bg-img"
         style={{ backgroundImage: "url(img/core-img/pattern.png)" }}

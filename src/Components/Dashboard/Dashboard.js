@@ -10,41 +10,43 @@ import { Row, Col } from "reactstrap";
 import Logo from "../../assets/tron.png";
 const Dashboard = (props) => {
   const [contract, setContract] = useState();
-  //   const [directReferrals,setDirectReferrals]=useState();
-  //   const [referrerIncome, setReferrerIncome] = useState();
-  //   const [currPool, setCurrPool] = useState();
-  //   const [totalMembers, setTotalMembers] = useState();
-  //   const [holdAmount, setHoldAmount] = useState();
-  //   const [unreleasedAmount,setUnreleasedAmount]=useState();
+  const [poolAmount,setPoolAmount]=useState([])
 
 
+
+  function setPoolPrice(){
+    let price=[];
+
+    for(let i=1;i<=20;i++){
+      price.push(i*30);
+    }
+    setPoolAmount(price);
+  }
+  
+  
+
+ 
+
+useEffect(() => {
+  console.log("pool price in personal data----->",getPoolPrice())
+  setPoolPrice()
+  
+}, [props.personalData])
 
   console.log("contract in dashboard ------>", props.contract);
   console.log("account in dashboard----->", props.account);
   console.log("personalDataaaaaaaaa", props.personalData);
 
-  //   useEffect(() => {
-  //       personalData()
-  //   }, [props.personalData])
+  
 
-  //   const personalData=async()=>{
-  //       if (!props.personalData || !props.account) {
-  //         return;
-  //       }
-  //       let currPool = props.personalData.personalData.currPool;
-  //       setCurrPool(currPool);
-  //       let hold = props.personalData.personalData.holdAmount;
-  //       setHoldAmount(hold);
-  //       let directReferrals=props.personalData.personalData.directReferrals;
-  //       setDirectReferrals(directReferrals)
-  //       let referrerIncome = props.personalData.personalData.referrerIncome;
-  //       setReferrerIncome(referrerIncome);
-  //       let totalMembers = props.personalData.personalData.totalMembers;
-  //       setTotalMembers(totalMembers);
-  //       let unreleasedAmount = props.personalData.personalData.releasedAmount;
-  //       setUnreleasedAmount(unreleasedAmount)
 
-  //   }
+  const getPoolPrice=()=>{
+  if (!props.personalData || !props.account) {
+    return;
+  }
+  let poolPrice=props.personalData.personalData.dollars;
+  return poolPrice;
+  }
 
   const upgradePool = async () => {
     if (!props.personalData || !props.account) {
@@ -114,13 +116,22 @@ const Dashboard = (props) => {
             <div className="modal-body">
               <div>
                 <i className="fa fa-dollar"></i>
-                <span className="ml-3 font-weight-bold">2.09</span>
+                <span className="ml-3 font-weight-bold">
+                  {props.personalData
+                    ? poolAmount[props.personalData.personalData.currPool]
+                    : "0"}
+                </span>
               </div>
               <div className="d-flex">
                 <div className="icon-box">
                   <img src={Logo} alt="dhb" />
                 </div>
-                <span className="ml-3 font-weight-bold">30</span>
+                <span className="ml-3 font-weight-bold">
+                  {props.personalData
+                    ? poolAmount[props.personalData.personalData.currPool] *
+                      parseInt(props.personalData.personalData.dollars)
+                    : "0"}
+                </span>
               </div>
             </div>
             <div className="modal-btn">
@@ -169,7 +180,11 @@ const Dashboard = (props) => {
                 <div className="icon-box">
                   <img src={Logo} alt="dhb" />
                 </div>
-                <span className="ml-3 font-weight-bold">30</span>
+                <span className="ml-3 font-weight-bold">
+                  {props.personalData
+                    ? parseInt(props.personalData.personalData.dollars) * 30
+                    : "---"}
+                </span>
               </div>
             </div>
             <div className="modal-btn">
@@ -214,7 +229,6 @@ const Dashboard = (props) => {
             Enter
           </button>
         </Col>
-
       </Row>
 
       <div className="row ">
