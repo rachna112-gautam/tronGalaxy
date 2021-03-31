@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import Blockchain from './BlockchainProvider/blockchain';
 
 function App(props) {
-	console.log('contract info--->', props);
-	return (
+
+  return (
     <Router>
-      
+
       <Blockchain />
       <div className="App">
         {/* <Dashboard /> */}
@@ -44,9 +44,9 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-	return {
-		contract: state.account,
-		personalData: state.personalData
-	};
+  return {
+    contract: state.account,
+    personalData: state.personalData
+  };
 };
 export default connect(mapStateToProps)(App);
