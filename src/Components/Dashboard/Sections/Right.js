@@ -8,11 +8,11 @@ const Right = (props) => {
         <div className="right">
             <div className="user">
                 <i className="fa fa-id-card"></i>
-                <span>{props.personalData ? props.personalData.id : "-"}</span>
+                <span>{props.personalData ? props.personalData.personalData.id : "-"}</span>
             </div>
             <div className="user">
                 <i className="fa fa-users"></i>
-                <span>{props.contractData ? props.contractData.totalUsers : "-"}</span>
+                <span>{props.personalData ? props.personalData.personalData.totalUsers : "-"}</span>
             </div>
 
             <div className="links mt-4">
@@ -29,7 +29,6 @@ const Right = (props) => {
 const mapStateToProps = (state) => {
     return {
         personalData: state.personalData,
-        contractData: state.contractData,
         account: state.account,
     };
 };
