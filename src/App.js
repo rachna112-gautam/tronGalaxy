@@ -9,37 +9,38 @@ import Blockchain from './BlockchainProvider/blockchain';
 function App(props) {
 	console.log('contract info--->', props);
 	return (
-		<Router>
-			<Blockchain />
-			<div className="App">
-				{/* <Dashboard /> */}
+    <Router>
+      
+      <Blockchain />
+      <div className="App">
+        {/* <Dashboard /> */}
 
-				<Particles
-					className="particles"
-					params={{
-						particles: {
-							number: {
-								value: 50
-							},
-							size: {
-								value: 3
-							}
-						},
-						interactivity: {
-							events: {
-								onhover: {
-									enable: true,
-									mode: 'repulse'
-								}
-							}
-						}
-					}}
-				/>
-				<Route path="/" exact component={LandingPage} />
-				<Route path="/dashboard" exact component={Dashboard} />
-			</div>
-		</Router>
-	);
+        <Particles
+          className="particles"
+          params={{
+            particles: {
+              number: {
+                value: 50,
+              },
+              size: {
+                value: 3,
+              },
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: "repulse",
+                },
+              },
+            },
+          }}
+        />
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/dashboard" exact component={Dashboard} />
+      </div>
+    </Router>
+  );
 }
 
 const mapStateToProps = (state) => {

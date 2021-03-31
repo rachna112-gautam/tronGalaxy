@@ -68,7 +68,7 @@ const Dashboard = (props) => {
   };
 
   const enter = async () => {
-    if (!props.contract.contract || !props.personalData.personalData || !props.account) {
+    if (!props.contract.contract || !props.personalData.personalData) {
       alert("content not loaded");
       return;
     }
