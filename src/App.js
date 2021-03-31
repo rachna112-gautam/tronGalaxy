@@ -10,7 +10,6 @@ function App(props) {
 
   return (
     <Router>
-
       <Blockchain />
       <div className="App">
         {/* <Dashboard /> */}
@@ -36,8 +35,8 @@ function App(props) {
             },
           }}
         />
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/dashboard" exact component={Dashboard} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/dashboard"  component={Dashboard} />
       </div>
     </Router>
   );

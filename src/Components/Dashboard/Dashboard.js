@@ -163,7 +163,7 @@ const Dashboard = (props) => {
             <div className="modal-body">
               <div>
                 <i className="fa fa-dollar"></i>
-                <span className="ml-3 font-weight-bold">2.09</span>
+                <span className="ml-3 font-weight-bold">30</span>
               </div>
               <div className="d-flex">
                 <div className="icon-box">
