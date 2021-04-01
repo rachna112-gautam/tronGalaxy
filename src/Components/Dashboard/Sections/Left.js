@@ -40,6 +40,16 @@ const Left = (props) => {
                 <div className="col-lg-4 col-sm-6 col-md-6">
                     <Box title="Cycles" value={personalData ? personalData.cycles : "-"} icon="users" number="6" />
                 </div>
+                <div className="col-lg-4 col-sm-6 col-md-6">
+                    <Box title="Earned Amount" value={personalData ? personalData.earnedAmount : "-"} icon="0" number="4" />
+                </div>
+                <div className="col-lg-4 col-sm-6 col-md-6">
+                    <Box title="UnReleased Amount" value={personalData ? personalData.prevHoldAmount : "-"} icon="user" number="5" />
+                </div>
+
+                <div className="col-lg-4 col-sm-6 col-md-6">
+                    <Box title="Released Amount" value={personalData ? personalData.releasedAmount : "-"} icon="users" number="6" />
+                </div>
             </div>
         </div>
     )
