@@ -35,8 +35,8 @@ function App(props) {
 						}
 					}}
 				/>
-				<Route path="/" exact component={LandingPage} />
-				<Route path="/dashboard" exact component={Dashboard} />
+				{/* <Route path="/" exact component={LandingPage} /> */}
+				<Route path="/" exact component={Dashboard} />
 			</div>
 		</Router>
 	);
