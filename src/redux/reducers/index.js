@@ -1,15 +1,13 @@
-import { act } from "react-dom/test-utils";
 import {
   ACCOUNT_UPDATE,
   CONTRACT_LOADED,
-  ON_PERSONAL_DATA_LOADED,
-  ON_CONTRACT_DATA_LOADED,
+  ON_PERSONAL_DATA_LOADED
 } from "../constants/action-types";
 
 const initialState = {
   account: null,
   blockchainClient: null,
-  myData: {},
+  myData: {}
 };
 
 function rootReducer(state = initialState, action) {
@@ -21,21 +19,17 @@ function rootReducer(state = initialState, action) {
       });
 
     case CONTRACT_LOADED:
+      // console.log("contract in reducer is------->",action.payload)
       return Object.assign({}, state, {
         contract: action.payload,
       });
 
     case ON_PERSONAL_DATA_LOADED:
-
+      console.log("personalData--->", action.payload)
       return Object.assign({}, state, {
         personalData: action.payload,
       });
 
-    case ON_CONTRACT_DATA_LOADED:
-
-      return Object.assign({}, state, {
-        contractData: action.payload,
-      });
 
     default: {
       return state;

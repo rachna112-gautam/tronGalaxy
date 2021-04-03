@@ -398,3 +398,16 @@ Col {
     margin-top: 5px;
   }
 }
+
+.upgrade-pool{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upgrade-pool-btn{
+  margin-right: 1rem !important;
+}
+
+.navbar{
+  background: #00000066 !important;
+}

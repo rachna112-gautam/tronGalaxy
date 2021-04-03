@@ -4,16 +4,11 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import Dashboard from './Components/Dashboard/Dashboard';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import BlockchainProvider from './BlockchainProvider/index';
+import Blockchain from './BlockchainProvider/blockchain';
 
 function App(props) {
-	console.log('contract info--->', props);
-	return (
-		<Router>
-			<BlockchainProvider />
-			<div className="App">
-				{/* <Dashboard /> */}
-
+	return(
+<div>
 				<Particles
 					className="particles"
 					params={{
@@ -35,17 +30,19 @@ function App(props) {
 						}
 					}}
 				/>
+				<Router>
 				{/* <Route path="/" exact component={LandingPage} /> */}
 				<Route path="/" exact component={Dashboard} />
-			</div>
+			
 		</Router>
+		</div>
 	);
 }
 
 const mapStateToProps = (state) => {
-	return {
-		contract: state.account,
-		personalData: state.personalData
-	};
+  return {
+    contract: state.account,
+    personalData: state.personalData
+  };
 };
 export default connect(mapStateToProps)(App);

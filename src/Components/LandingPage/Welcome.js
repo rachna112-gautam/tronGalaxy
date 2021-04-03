@@ -5,7 +5,7 @@ const Welcome = () => {
   return (
     <section className="hero-section moving section-padding" id="home">
 
-      <div className="moving-bg" />
+      {/* <div className="moving-bg" /> */}
       {/* Hero Content */}
       <div className="hero-section-content">
         <div className="container ">

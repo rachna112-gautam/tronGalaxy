@@ -7,116 +7,200 @@ import Header from "./Sections/Header";
 
 import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
-import Logo from '../../assets/tron.png';
+import Logo from "../../assets/tron.png";
 const Dashboard = (props) => {
     const [contract, setContract] = useState();
-    const [poolsPrice, setPoolsPrice] = useState([]);
-    const [dollar, setDollar] = useState();
+    const [poolAmount, setPoolAmount] = useState([])
+    const [history, setHistory] = useState({});
+    const [ref, setRef] = useState("TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9")
+
+    function setPoolPrice() {
+        let price = [];
+
+        for (let i = 1; i <= 20; i++) {
+            price.push(i * 30);
+        }
+        setPoolAmount(price);
+    }
+
+
+
+
 
     useEffect(() => {
-        setContract(contract);
-        dollars();
-    }, [props.account]);
+        console.log("pool price in personal data----->", getPoolPrice())
+        setPoolPrice()
 
+    }, [props.personalData])
 
-    const dollars = async () => {
-        if (!props.contract || !props.account) {
+    console.log("contract in dashboard ------>", props.contract);
+    console.log("account in dashboard----->", props.account);
+    console.log("personalDataaaaaaaaa", props.personalData);
+
+    const getPoolPrice = () => {
+        if (!props.personalData || !props.account) {
             return;
         }
-        let dollars =
-            (await props.contract.methods.dollars().call()).toNumber() / 10 ** 6;
-        // console.log("dollar", dollars);
-        setDollar(dollars);
-        let poolPrice = [];
-        for (let i = 0; i < 20; i++) {
-            let res = (await props.contract.poolsPrice(i).call()).toNumber();
-            poolPrice[i] = res;
-        }
-        setPoolsPrice(poolPrice);
-        // console.log("pool price", poolPrice);
-    };
+        let poolPrice = props.personalData.personalData.dollars;
+        return poolPrice;
+    }
 
     const upgradePool = async () => {
         if (!props.personalData || !props.account) {
             return;
         }
 
-        let currPool = props.personalData.currPool;
-        // console.log("Current Pool", currPool);
 
-        await props.contract.methods
+        let currPool = props.personalData.personalData.currPool;
+        console.log("personalDataaaaaaaaa", props.personalData);
+        let hold = parseInt(props.personalData.personalData.holdAmount * 10 ** 6);
+
+        console.log("hold amount is------->", hold)
+
+        // console.log("hold..", typeof props.personalData.currPool);
+        await props.contract.contract.methods
             .buyPool()
-            .send({ from: props.account, callValue: poolsPrice[currPool] });
+            .send({
+                from: props.account.address,
+                callValue: props.personalData.personalData.poolPrice[currPool] - hold,
+            });
+        window.location.reload();
     };
 
     const enter = async () => {
-        if (!props.contract || !props.personalData || !props.account) {
-            alert("content not loaded")
+        if (!props.contract.contract || !props.personalData.personalData) {
+            alert("content not loaded");
             return;
         }
 
-        if (props.personalData.isExist) {
-            alert("user already exist")
+        if (props.personalData.personalData.isExist) {
+            alert("user already exist");
             return;
         }
-        await props.contract.methods
-            .enterSystem("TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9")
-            .send({ from: props.account, callValue: poolsPrice[0] });
+
+        await props.contract.contract.methods
+            .enterSystem(ref)
+            .send({ from: props.account, callValue: 30000000 });
+        window.location.reload();
+
     };
 
     return (
         <div className="dashboard">
-            <div className="modal fade" id="upgradePoolModal" tabindex="-1" role="dialog" aria-labelledby="upgradePoolModalTitle" aria-hidden="true">
+            <div
+                className="modal fade"
+                id="upgradePoolModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="upgradePoolModalTitle"
+                aria-hidden="true"
+            >
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLongTitle">Upgrade Pool</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <h5 className="modal-title" id="exampleModalLongTitle">
+                                Upgrade Pool
+              </h5>
+                            <button
+                                type="button"
+                                className="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <div >
+                            <div>
                                 <i className="fa fa-dollar"></i>
-                                <span className="ml-3 font-weight-bold">200</span>
+                                <span className="ml-3 font-weight-bold">
+                                    {props.personalData
+                                        ? poolAmount[props.personalData.personalData.currPool]
+                                        : "0"}
+                                </span>
                             </div>
                             <div className="d-flex">
-                                <div className="icon-box"><img src={Logo} alt="dhb" /></div>
-                                <span className="ml-3 font-weight-bold">20</span>
+                                <div className="icon-box">
+                                    <img src={Logo} alt="dhb" />
+                                </div>
+                                <span className="ml-3 font-weight-bold">
+                                    {props.personalData
+                                        ? poolAmount[props.personalData.personalData.currPool] *
+                                        parseInt(props.personalData.personalData.dollars)
+                                        : "0"}
+                                </span>
                             </div>
-
                         </div>
                         <div className="modal-btn">
-                            <button type="button" onClick={() => { upgradePool(); }} className="btn btn-upgrade">Upgrade Pool</button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    upgradePool();
+                                }}
+                                className="btn btn-upgrade"
+                            >
+                                Upgrade Pool
+              </button>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <div className="modal fade" id="enterModal" tabindex="-1" role="dialog" aria-labelledby="enterModalTitle" aria-hidden="true">
+            <div
+                className="modal fade"
+                id="enterModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="enterModalTitle"
+                aria-hidden="true"
+            >
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLongTitle">Enter Modal</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <h5 className="modal-title" id="exampleModalLongTitle">
+                                Enter Modal
+              </h5>
+                            <button
+                                type="button"
+                                className="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <div >
+                            <div>
                                 <i className="fa fa-dollar"></i>
-                                <span className="ml-3 font-weight-bold">200</span>
+                                <span className="ml-3 font-weight-bold">30</span>
                             </div>
                             <div className="d-flex">
-                                <div className="icon-box"><img src={Logo} alt="dhb" /></div>
-                                <span className="ml-3 font-weight-bold">20</span>
+                                <div className="icon-box">
+                                    <img src={Logo} alt="dhb" />
+                                </div>
+                                <span className="ml-3 font-weight-bold">
+                                    {props.personalData
+                                        ? parseInt(props.personalData.personalData.dollars) * 30
+                                        : "---"}
+                                </span>
                             </div>
-
+                        </div>
+                        <div>
+                            <label>Enter Referrer Address</label>
+                            <input type="text" id="referrer" onChange={(r) => {
+                                setRef(r.target.value)
+                            }} />
                         </div>
                         <div className="modal-btn">
-                            <button type="button" onClick={() => { enter(); }} className="btn btn-upgrade">Enter</button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    enter();
+                                }}
+                                className="btn btn-upgrade"
+                            >
+                                Enter
+              </button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -131,19 +215,18 @@ const Dashboard = (props) => {
                 </div>
             </div>
             <Row>
-                <Col xs="6" sm="6" lg="6">
+                <Col xs="12" sm="12" lg="12" className="upgrade-pool">
                     <button
-                        className="btn more-btn"
-
-                        data-toggle="modal" data-target="#upgradePoolModal"
+                        className="btn more-btn upgrade-pool-btn"
+                        data-toggle="modal"
+                        data-target="#upgradePoolModal"
                     >
                         Upgrade Pool
           </button>
-                </Col>
-                <Col xs="6" sm="6" lg="6">
                     <button
                         className="btn more-btn"
-                        data-toggle="modal" data-target="#enterModal"
+                        data-toggle="modal"
+                        data-target="#enterModal"
                     >
                         {" "}
             Enter
@@ -153,7 +236,7 @@ const Dashboard = (props) => {
 
             <div className="row ">
                 <div className="col-lg-12">
-                    <Table />
+                    <Table history={history} />
                 </div>
             </div>
         </div>
@@ -165,7 +248,6 @@ const mapStateToProps = (state) => {
         personalData: state.personalData,
         contract: state.contract,
         account: state.account,
-        contractData: state.contractData
     };
 };
 
