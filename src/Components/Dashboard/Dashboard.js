@@ -180,15 +180,7 @@ const Dashboard = (props) => {
                 </span>
               </div>
             </div>
-            <div className="modal-input">
-              {/* <label>Enter Referrer Address</label>
-              <input
-                type="text"
-                id="referrer"
-              
-                className="form-control"
-              /> */}
-            </div>
+
             <div className="modal-btn">
               <button
                 type="button"
