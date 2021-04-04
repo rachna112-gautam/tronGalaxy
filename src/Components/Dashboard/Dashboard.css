@@ -411,3 +411,15 @@ Col {
 .navbar{
   background: #00000066 !important;
 }
+
+.right-title{
+  font-size: 1.5rem !important;
+}
+
+.modal-input{
+      display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    justify-content: center;
+    align-items: center;
+}
