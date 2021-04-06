@@ -145,7 +145,6 @@ const Blockchain = (props) => {
             globalLoading,
             history
         });
-
     };
 
     const beautifyNumber = (input, isFixed) => {

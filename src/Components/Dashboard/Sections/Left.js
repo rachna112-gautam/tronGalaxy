@@ -8,6 +8,7 @@ const Left = (props) => {
     useEffect(() => {
         personaldata()
     }, [props.personalData])
+    
     const personaldata = async () => {
         if (!props.personalData) {
             return
