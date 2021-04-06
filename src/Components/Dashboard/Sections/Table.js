@@ -1,56 +1,69 @@
-import React from 'react'
-import { connect } from "react-redux"
+import React, { useEffect, useState, useRefresh } from "react";
+import { connect } from "react-redux";
 
-export default function Table() {
-    return (
-        <div className="btm-table">
-            <h4>History</h4>
-            <div className="table-responsive">
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th>DATE</th>
-                            <th>PH</th>
-                            <th>GROWTH</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>04-Feb-2021 14:56:45</td>
-                            <td>$30(570 TRX)</td>
-                            <td>$45(855 TRX)</td>
-                        </tr>
-                        <tr>
-                            <td>12-Feb-2021 08:26:39</td>
-                            <td>$60(1140 TRX)</td>
-                            <td>$90(1710 TRX)</td>
-                        </tr>
-                        <tr>
-                            <td>21-Feb-2021 16:35:54</td>
-                            <td>	$90(1710 TRX)</td>
-                            <td>$135(2565 TRX)</td>
-                        </tr>
-                        <tr>
-                            <td>12-Feb-2021 08:26:39</td>
-                            <td>$60(1140 TRX)</td>
-                            <td>$90(1710 TRX)</td>
-                        </tr>
-                        <tr>
-                            <td>21-Feb-2021 16:35:54</td>
-                            <td>$90(1710 TRX)</td>
-                            <td>$135(2565 TRX)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    )
+function Table(props) {
+  console.log("his in table-->",props.history)
+
+  const [history,setHistory]=useState([])
+
+  useEffect(() => {
+    setHistory(props.history);
+    console.log("history in useeffect is------->",history)
+    // historyTable();
+  }, [props.personalData])
+
+  // function historyTable(){
+  //   let table=[{}];
+  //   if(props.history){
+  //       for(let i=0;i<props.history.length;i++){
+  //         table.push(props.history[i])
+  //         console.log("table is---->",history[i]);
+  //       }
+  //   }
+  //   else{
+  //     alert("history is not loaded");
+  //   }
+  //   return table;
+   
+  // }
+
+  return (
+    <div className="btm-table">
+      <h4>History</h4>
+      <div className="table-responsive">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>DATE</th>
+              <th>POOL</th>
+              <th>AMOUNT</th>
+              <th>PRICE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* {props.personalData?
+            props.history.map((item, i)=> {
+              const time = item.timestamp.toNumber();
+              var s = new Date(time*1000).toLocaleDateString("en-US");
+              // console.log("history", s, item.pool.toNumber(), item.amount.toNumber(),item.price.toNumber())
+              // console.log("histor length is---->",history.length)
+              <tr key={i}>
+                <td>{s}</td>
+                <td>{item.pool.toNumber()}</td>
+              </tr>
+            }):" "
+          } */}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 const mapStateToProps = (state) => {
-    return {
-        personalData: state.personalData,
-        contract: state.contract,
-        account: state.account,
-    };
+  return {
+    personalData: state.personalData,
+    contract: state.contract,
+    account: state.account,
+  };
 };
-connect(mapStateToProps)(Table);
+export default connect(mapStateToProps)(Table);

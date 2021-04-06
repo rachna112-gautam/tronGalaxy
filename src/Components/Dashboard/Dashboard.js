@@ -81,6 +81,19 @@ const Dashboard = (props) => {
     window.location.reload();
   };
 
+
+
+  useEffect(() => {
+    console.log("persona data in table file is---->", props.personalData);
+
+    if (!props.personalData) {
+      console.log("contract not loaded");
+      return;
+    }
+    setHistory(props.personalData.personalData.history);
+    console.log("history in dashboard..", props.personalData.personalData.history);
+  }, [props.personalData]);
+
   return (
     <div className="dashboard">
       <div
@@ -227,7 +240,7 @@ const Dashboard = (props) => {
 
       <div className="row ">
         <div className="col-lg-12">
-          <Table history={history} />
+          <Table history={history}/>
         </div>
       </div>
     </div>

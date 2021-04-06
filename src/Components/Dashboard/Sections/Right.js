@@ -12,6 +12,7 @@ const Right = (props) => {
   const getMyRefLink = (addr) => {
     return "https://trongalaxy.com/?ref=" + addr;
   };
+  
   useEffect(() => {
     let url = window.location.href;
     console.log("url is setting------>", url);
