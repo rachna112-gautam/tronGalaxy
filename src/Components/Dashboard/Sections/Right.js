@@ -1,93 +1,91 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Input } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Config from '../../../BlockchainProvider/Config'
-
+import Config from "../../../BlockchainProvider/Config";
+import "./../Dashboard.css";
 const Right = (props) => {
-    const [refLink, setRefLink] = useState();
-    const [copySuccess, setCopySuccess] = useState("");
-    const [ref, setRef] = useState(Config.CONTRACT_ADDRESS);
+  const [refLink, setRefLink] = useState();
+  const [copySuccess, setCopySuccess] = useState("");
+  const [url, setUrl] = useState("");
+  const getMyRefLink = (addr) => {
 
-    const getMyRefLink = (addr) => {
-      return "https://trongalaxy.com/?ref=" + addr;
-    };
-    useEffect(() => {
-      let url = window.location.href;
-      let params = new URL(url).searchParams;
-      localStorage.setItem("ref", params.get("ref"));
-      if (localStorage.getItem("ref") != "")
-        setRef(localStorage.getItem("ref"));
-    }, [window.location.href]);
-    useEffect(() => {
-      if (props.account) {
-        setRefLink(getMyRefLink(props.address));
-      }
+    return url + "?ref=" + addr;
+  };
 
-      console.log("pros.accout", props.address);
-    }, [props.account]);
+  useEffect(() => {
+    let url = window.location.href;
+    console.log("url is setting------>", url);
+    setUrl(url)
+  }, [window.location.href]);
 
-    function copyToClipboard(e) {
-      var textField = document.createElement("textarea");
-      textField.innerText = refLink;
-      document.body.appendChild(textField);
-      textField.select();
-      document.execCommand("copy");
-      textField.remove();
-
-      setCopySuccess("Copied!");
-      toast.success("Referral Link Copied");
+  useEffect(() => {
+    if (props.account) {
+      setRefLink(getMyRefLink(props.account.address));
     }
 
+    console.log("pros.accout", props.address);
+  }, [props.account]);
 
-    return (
-      <div className="right">
-        <div className="user">
-          <i className="fa fa-id-card"></i>
-          <span>
-            {props.personalData ? props.personalData.personalData.id : "-"}
-          </span>
-        </div>
-        <div className="user">
-          <i className="fa fa-users"></i>
-          <span>
-            {props.personalData
-              ? props.personalData.personalData.totalUsers
-              : "-"}
-          </span>
-        </div>
+  function copyToClipboard(e) {
+    var textField = document.createElement("textarea");
+    textField.innerText = refLink;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand("copy");
+    textField.remove();
 
-        <div className="links mt-4">
-          <h2>My Wallet</h2>
-          <div className="aff-link">
-            {props.account ? props.account.address : "0x"}
-          </div>
-        </div>
-        <div className="links">
-          <h2>Affiliate Wallet</h2>
-          <Input
-            onChange={(t) => {
-              copyToClipboard();
-            }}
-            type="text"
-            name="amount"
-            id="amount"
-            value={refLink}
-            className="ref-input"
-            placeholder="Enter Amount"
-            onClick={copyToClipboard}
-          />
-        </div>
-        <ToastContainer/>
+    setCopySuccess("Copied!");
+    toast.success("Referral Link Copied");
+  }
 
+  return (
+    <div className="right">
+      <div className="user">
+        <span className="right-title">User ID</span>
+        <span>
+          {props.personalData ? props.personalData.personalData.id : "-"}
+        </span>
       </div>
-    );
-}
-const mapStateToProps = (state) => {
-    return {
-        personalData: state.personalData,
-        account: state.account,
-    };
+      <div className="user">
+        <span className="right-title">Total Users</span>
+        <span>
+          {props.personalData
+            ? props.personalData.personalData.totalUsers
+            : "-"}
+        </span>
+      </div>
+
+      <div className="links mt-4">
+        <h2>My Wallet</h2>
+        <div className="aff-link">
+          {props.account ? props.account.address : "0x"}
+        </div>
+      </div>
+      <div className="links">
+        <h2>Affiliate Wallet</h2>
+        <Input
+          onChange={(t) => {
+            copyToClipboard();
+          }}
+          type="text"
+          name="amount"
+          id="amount"
+          value={refLink}
+          className="ref-input"
+          placeholder="Enter Amount"
+          onClick={copyToClipboard}
+        />
+      </div>
+      <ToastContainer />
+    </div>
+  );
 };
-export default connect(mapStateToProps)(Right)
+const mapStateToProps = (state) => {
+  return {
+    personalData: state.personalData,
+    account: state.account,
+  };
+};
+export default connect(mapStateToProps)(Right);

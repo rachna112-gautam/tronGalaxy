@@ -1,6 +1,7 @@
-import React from 'react'
-import './LandingPage.scss'
-const JoinUs = () => {
+import React from "react";
+import "./LandingPage.scss";
+import { connect } from "react-redux";
+const JoinUs = (props) => {
   return (
     <section className="join-us section-padding-0-100 clearfix" id="services">
       <div className="container">
@@ -14,14 +15,13 @@ const JoinUs = () => {
           </div>
           <h2 className="fadeInUp" data-wow-delay="0.3s">
             What we speciaized in
-            </h2>
+          </h2>
           <p className="fadeInUp" data-wow-delay="0.4s">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
             accumsan nisi Ut ut felis congue nisl hendrerit commodo.
-            </p>
+          </p>
         </div>
         <div className="row dark-row pt-60">
-
           <div className="col-lg-4 hidden-md hidden-sm hidden-xs">
             <img
               src="img/svg/join-bottom.svg"
@@ -38,7 +38,7 @@ const JoinUs = () => {
             </div>
             <h2 className="fadeInUp" data-wow-delay="0.3s">
               How It Work?
-              </h2>
+            </h2>
           </div>
           <div className="col-lg-4 hidden-md hidden-sm hidden-xs">
             <img src="img/svg/join-bottom.svg" className="arrow-img" alt="" />
@@ -55,8 +55,13 @@ const JoinUs = () => {
                   {/* <div className="cycle_icon">
                     <span className="gradient-t green">6</span>
                   </div> */}
-                  <h1>$30=Trx?</h1>
-
+                  <h1>
+                    $30=
+                    {props.personalData
+                      ? parseInt(props.personalData.personalData.dollars) * 30
+                      : 0}
+                    Trx
+                  </h1>
                 </div>
               </div>
             </div>
@@ -71,9 +76,7 @@ const JoinUs = () => {
                     <span className="gradient-t green">5</span>
                   </div> */}
                   <h1>Growth</h1>
-                  <h6>
-                    Just Invest in one time get regular growth
-                  </h6>
+                  <h6>Just Invest in one time get regular growth</h6>
                 </div>
               </div>
             </div>
@@ -97,5 +100,11 @@ const JoinUs = () => {
       </div>
     </section>
   );
-}
-export default JoinUs
+};
+const mapStateToProps = (state) => {
+  return {
+    personalData: state.personalData,
+  };
+};
+
+export default connect(mapStateToProps)(JoinUs);
