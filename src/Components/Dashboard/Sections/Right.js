@@ -15,10 +15,11 @@ const Right = (props) => {
   };
 
   useEffect(() => {
-    let url = window.location.href;
+    let url = window.location.origin;
     console.log("url is setting------>", url);
+
     setUrl(url)
-  }, [window.location.href]);
+  }, [window.location.origin]);
 
   useEffect(() => {
     if (props.account) {
