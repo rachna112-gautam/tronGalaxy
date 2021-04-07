@@ -79,7 +79,7 @@ const Dashboard = (props) => {
     await props.contract.contract.methods
       .enterSystem(_ref)
       .send({
-        from: props.account, callValue: 30000000,
+        from: props.account, callValue: 30000000 * props.personalData.personalData.dollars,
         feeLimit: 1000000000
       });
     window.location.reload();
