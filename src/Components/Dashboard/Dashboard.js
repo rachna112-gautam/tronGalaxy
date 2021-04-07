@@ -4,7 +4,7 @@ import Right from "./Sections/Right";
 import Left from "./Sections/Left";
 import Table from "./Sections/Table";
 import Header from "./Sections/Header";
-
+import TopNav from './Sections/TopNav';
 import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Logo from "../../assets/tron.png";
@@ -212,7 +212,8 @@ const Dashboard = (props) => {
           </div>
         </div>
       </div>
-      <Header />
+
+      <TopNav />
 
       <div className="row flex-wrap-reverse">
         <div className="col-lg-8">
@@ -231,14 +232,24 @@ const Dashboard = (props) => {
           >
             Upgrade Pool
           </button>
-          <button
-            className="btn more-btn"
-            data-toggle="modal"
-            data-target="#enterModal"
-          >
-            {" "}
+          {props.personalData ? props.personalData.personalData.isExist ?
+            <button
+              className="btn more-btn"
+              data-toggle="modal"
+              data-target="#enterModal"
+              disabled
+            >
+              {" "}
             Enter
-          </button>
+          </button> : <button
+              className="btn more-btn"
+              data-toggle="modal"
+              data-target="#enterModal"
+            >
+              {" "}
+          Enter
+        </button> : ''
+          }
         </Col>
       </Row>
 
@@ -252,6 +263,7 @@ const Dashboard = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log("state--->", state)
   return {
     personalData: state.personalData,
     contract: state.contract,

@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./../../../assets/TronGalaxyPower.png";
+import { connect } from "react-redux"
+export default function TopNav(props) {
+  const [personalData, setPersonalData] = useState(0)
 
-export default function TopNav() {
+  useEffect(() => {
+    if (props.personalData)
+      setPersonalData(props.personalData.personalData.contractBalance)
+
+  }, [props])
   return (
     <nav class="top-navbar">
       <div class="container-fluid header">
         <a class="navbar-logo" href="/" aria-label="Tron Galaxy Power">
           <img src={Logo} alt="" />
         </a>
-        <div className="top-info">
-          <div className="address w-100">
-            <span>Address</span>
-            <span>TQ84aa5mWZDnR64</span>
-          </div>
-          <div className="tron-info w-100">
-            <div className="btnn">0 TRX</div>
-            <div className="btnn">0 USD</div>
-          </div>
-        </div>
-        <div className="logout">
-          <button type="button" className="btn logout-btn">
-            Logout
-          </button>
+
+        <div className="contract-bal">
+          Contract Balance
+        <span className="ml-3">
+            {props.personalData ? props.personalData.personalData.contractBalance : 0}
+          </span>
         </div>
       </div>
     </nav>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    personalData: state.personalData,
+
+    account: state.account,
+  };
+};
+
+connect(mapStateToProps)(TopNav);

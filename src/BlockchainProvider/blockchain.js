@@ -26,6 +26,7 @@ const Blockchain = (props) => {
           );
           setAccount(window.tronWeb.defaultAddress.base58);
           setTronWeb(window.tronWeb);
+
           setLoading(false);
           clearInterval(interval);
           return;

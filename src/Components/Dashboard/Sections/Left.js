@@ -38,7 +38,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Referrer Income"
-            value={personalData ? personalData.referrerIncome : "-"}
+            value={personalData ? personalData.referrerIncome / personalData.dollars : "-"}
             icon="dollar"
             number="2"
           />
@@ -71,7 +71,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Hold Amount"
-            value={personalData ? personalData.holdAmount : "-"}
+            value={personalData ? personalData.holdAmount / personalData.dollars : "-"}
             icon="dollar"
             number="5"
           />
@@ -80,7 +80,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="UnReleased Amount"
-            value={personalData ? personalData.prevHoldAmount : "-"}
+            value={personalData ? personalData.prevHoldAmount / personalData.dollars : "-"}
             icon="dollar"
             number="5"
           />
@@ -89,7 +89,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Released Amount"
-            value={personalData ? personalData.releasedAmount : "-"}
+            value={personalData ? personalData.releasedAmount / personalData.dollars : "-"}
             icon="dollar"
             number="6"
           />

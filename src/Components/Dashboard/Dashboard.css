@@ -104,7 +104,7 @@ div#navbarSupportedContent {
   overflow: hidden;
 }
 .header {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .logout .logout-btn {
@@ -142,8 +142,7 @@ div#navbarSupportedContent {
 
 .box-top {
   display: flex;
-  justify-content: flex-end;
-  flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: baseline;
 }
 
@@ -399,27 +398,41 @@ Col {
   }
 }
 
-.upgrade-pool{
+.upgrade-pool {
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-.upgrade-pool-btn{
+.upgrade-pool-btn {
   margin-right: 1rem !important;
 }
 
-.navbar{
+.navbar {
   background: #00000066 !important;
 }
 
-.right-title{
+.right-title {
   font-size: 1.5rem !important;
 }
 
-.modal-input{
-      display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
-    justify-content: center;
-    align-items: center;
+.modal-input {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-bal {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.wallet-bal .balance {
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
 }

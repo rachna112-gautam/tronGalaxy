@@ -65,7 +65,7 @@ const Right = (props) => {
         </div>
       </div>
       <div className="links">
-        <h2>Affiliate Link</h2>
+        <h2>Referral address</h2>
         <Input
           onChange={(t) => {
             copyToClipboard();
@@ -80,6 +80,13 @@ const Right = (props) => {
         />
       </div>
       <ToastContainer />
+      <div className="wallet-bal">
+        <h2>Wallet balance</h2>
+        <div className="balance">
+          <i className="fa fa-dollar"></i>
+          <span className="wallet-value">-</span>
+        </div>
+      </div>
     </div>
   );
 };

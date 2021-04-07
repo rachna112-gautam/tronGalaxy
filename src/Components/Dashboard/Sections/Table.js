@@ -2,15 +2,19 @@ import React, { useEffect, useState, useRefresh } from "react";
 import { connect } from "react-redux";
 
 function Table(props) {
-  console.log("his in table-->",props.history)
+  console.log("his in table-->", props.history)
 
-  const [history,setHistory]=useState([])
-
+  const [history, setHistory] = useState(props.history)
   useEffect(() => {
-    setHistory(props.history);
-    console.log("history in useeffect is------->",history)
-    // historyTable();
+    if (props.personalData)
+      setHistory(props.personalData.personalData.history)
   }, [props.personalData])
+  // useEffect(() => {
+  //   if (!history && props.personalData)
+  //     setHistory(props.personalData.personalData.history);
+
+  //   // historyTable();
+  // }, [props.personalData])
 
   // function historyTable(){
   //   let table=[{}];
@@ -24,7 +28,7 @@ function Table(props) {
   //     alert("history is not loaded");
   //   }
   //   return table;
-   
+
   // }
 
   return (
@@ -41,18 +45,20 @@ function Table(props) {
             </tr>
           </thead>
           <tbody>
-            {/* {props.personalData?
-            props.history.map((item, i)=> {
-              const time = item.timestamp.toNumber();
-              var s = new Date(time*1000).toLocaleDateString("en-US");
-              // console.log("history", s, item.pool.toNumber(), item.amount.toNumber(),item.price.toNumber())
-              // console.log("histor length is---->",history.length)
-              <tr key={i}>
-                <td>{s}</td>
-                <td>{item.pool.toNumber()}</td>
-              </tr>
-            }):" "
-          } */}
+            {
+              history && history.length > 0 ? history.map((item, i) => {
+                const time = item.timestamp.toNumber();
+                var s = new Date(time * 1000).toLocaleDateString("en-US");
+                // console.log("history", s, item.pool.toNumber(), item.amount.toNumber(),item.price.toNumber())
+                // console.log("histor length is---->",history.length)
+                return <tr key={i}>
+                  <td>{s}</td>
+                  <td>{item.pool.toNumber()}</td>
+                  <td>{item.amount.toNumber()}</td>
+                  <td>{item.price.toNumber()}</td>
+                </tr>
+              }) : " "
+            }
           </tbody>
         </table>
       </div>
