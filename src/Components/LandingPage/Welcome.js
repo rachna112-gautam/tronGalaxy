@@ -33,7 +33,7 @@ const Welcome = () => {
                   {/* <a href="index.html#" className="btn more-btn mr-3">
                       Whitepaper
                     </a> */}
-                  <a href="/" className="btn more-btn">
+                  <a href="/dashboard" className="btn more-btn">
                     Login
                     </a>
                 </div>
