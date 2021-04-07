@@ -2,7 +2,7 @@ import './App.css';
 import Particles from 'react-particles-js';
 import LandingPage from './Components/LandingPage/LandingPage';
 import Dashboard from './Components/Dashboard/Dashboard';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Blockchain from './BlockchainProvider/blockchain';
 
