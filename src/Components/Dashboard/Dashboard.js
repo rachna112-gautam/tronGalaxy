@@ -9,6 +9,8 @@ import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
 import Logo from "../../assets/tron.png";
 import Config from "./../../BlockchainProvider/Config";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Dashboard = (props) => {
   const [contract, setContract] = useState();
   const [poolAmount, setPoolAmount] = useState([]);
@@ -50,7 +52,11 @@ const Dashboard = (props) => {
     let hold = parseInt(props.personalData.personalData.holdAmount * 10 ** 6);
 
     console.log("hold amount is------->", hold);
-
+    if (props.personalData.personalData.currPool === 6 && props.personalData.personalData.directReferrals < 1) {
+      toast.error('You must have 1 direct referral to buy 7th pool',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
     // console.log("hold..", typeof props.personalData.currPool);
     await props.contract.contract.methods.buyPool().send({
       from: props.account.address,

@@ -80,6 +80,7 @@ const Right = (props) => {
         />
       </div>
       <ToastContainer />
+
       <div className="wallet-bal">
         <h2>Wallet balance</h2>
         <div className="balance">
