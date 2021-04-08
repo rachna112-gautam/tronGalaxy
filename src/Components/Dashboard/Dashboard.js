@@ -28,6 +28,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     console.log("pool price in personal data----->", getPoolPrice());
     setPoolPrice();
+    console.log("props in dashboard-->", props)
   }, [props.personalData]);
 
   console.log("contract in dashboard ------>", props.contract);

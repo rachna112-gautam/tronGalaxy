@@ -22,7 +22,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Earned Amount"
-            value={personalData ? personalData.earnedAmount / personalData.dollars : "-"}
+            value={personalData ? parseFloat(personalData.earnedAmount / personalData.dollars).toFixed(2) : "-"}
             icon="dollar"
             number="4"
           />
@@ -38,7 +38,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Referrer Income"
-            value={personalData ? personalData.referrerIncome / personalData.dollars : "-"}
+            value={personalData ? parseFloat(personalData.referrerIncome / personalData.dollars).toFixed(2) : "-"}
             icon="dollar"
             number="2"
           />
@@ -71,7 +71,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Hold Amount"
-            value={personalData ? personalData.holdAmount / personalData.dollars : "-"}
+            value={personalData ? parseFloat(personalData.holdAmount / personalData.dollars).toFixed(2) : "-"}
             icon="dollar"
             number="5"
           />
@@ -80,7 +80,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="UnReleased Amount"
-            value={personalData ? personalData.prevHoldAmount / personalData.dollars : "-"}
+            value={personalData ? parseFloat(personalData.prevHoldAmount / personalData.dollars).toFixed(2) : "-"}
             icon="dollar"
             number="5"
           />
@@ -89,7 +89,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Released Amount"
-            value={personalData ? personalData.releasedAmount / personalData.dollars : "-"}
+            value={personalData ? parseFloat(personalData.releasedAmount / personalData.dollars).toFixed(2) : "-"}
             icon="dollar"
             number="6"
           />

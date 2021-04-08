@@ -25,6 +25,7 @@ const Blockchain = (props) => {
             window.tronWeb.defaultAddress.base58
           );
           setAccount(window.tronWeb.defaultAddress.base58);
+
           setTronWeb(window.tronWeb);
 
           setLoading(false);
@@ -143,6 +144,7 @@ const Blockchain = (props) => {
       let hist = await contract.getHistory(account, i).call();
       history.push(hist);
     }
+
 
     console.log("history", history);
     console.log("pool", poolPrice);

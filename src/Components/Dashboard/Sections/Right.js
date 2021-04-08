@@ -49,13 +49,12 @@ const Right = (props) => {
           {props.personalData ? props.personalData.personalData.id : "-"}
         </span>
       </div>
-      <div className="user">
-        <span className="right-title">Total Users</span>
-        <span>
-          {props.personalData
-            ? props.personalData.personalData.totalUsers
-            : "-"}
-        </span>
+      <div className="wallet-bal">
+        <h2>Wallet balance</h2>
+        <div className="balance">
+          <i className="fa fa-dollar"></i>
+          <span className="wallet-value">-</span>
+        </div>
       </div>
 
       <div className="links mt-4">
@@ -81,13 +80,7 @@ const Right = (props) => {
       </div>
       <ToastContainer />
 
-      <div className="wallet-bal">
-        <h2>Wallet balance</h2>
-        <div className="balance">
-          <i className="fa fa-dollar"></i>
-          <span className="wallet-value">-</span>
-        </div>
-      </div>
+
     </div>
   );
 };
