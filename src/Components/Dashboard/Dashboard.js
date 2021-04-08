@@ -15,7 +15,7 @@ const Dashboard = (props) => {
   const [contract, setContract] = useState();
   const [poolAmount, setPoolAmount] = useState([]);
   const [history, setHistory] = useState({});
-
+  const [poolActivate, setPoolActivate] = useState(false)
   function setPoolPrice() {
     let price = [];
 
@@ -102,9 +102,21 @@ const Dashboard = (props) => {
       return;
     }
     setHistory(props.personalData.personalData.history);
-    console.log("history in dashboard..", props.personalData.personalData.history);
-  }, [props.personalData]);
 
+  }, [props.personalData]);
+  useEffect(() => {
+    if (history && history.length > 0) {
+
+      var time = history[history.length - 1].timestamp.toNumber();
+      var s = new Date(time * 1000).getDate();
+      const diff = Math.abs((new Date().getDate()) - s);
+      if (diff < 7) {
+        setPoolActivate(false)
+      }
+      else
+        setPoolActivate(true);
+    }
+  }, [history])
   return (
     <div className="dashboard">
       <div
@@ -232,13 +244,20 @@ const Dashboard = (props) => {
       </div>
       <Row>
         <Col xs="12" sm="12" lg="12" className="upgrade-pool">
-          <button
+          {!poolActivate ? <button
             className="btn more-btn upgrade-pool-btn"
             data-toggle="modal"
             data-target="#upgradePoolModal"
+            disabled
           >
             Upgrade Pool
+          </button> : <button
+            className="btn more-btn upgrade-pool-btn"
+            data-toggle="modal"
+            data-target="#upgradePoolModal"
+          >  Upgrade Pool
           </button>
+          }
           {props.personalData ? props.personalData.personalData.isExist ?
             <button
               className="btn more-btn"
