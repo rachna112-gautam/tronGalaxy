@@ -245,20 +245,14 @@ const Dashboard = (props) => {
       </div>
       <Row>
         <Col xs="12" sm="12" lg="12" className="upgrade-pool">
-          {!poolActivate ? <button
+       <button
             className="btn more-btn upgrade-pool-btn"
             data-toggle="modal"
             data-target="#upgradePoolModal"
-            disabled
+           
           >
             Upgrade Pool
-          </button> : <button
-            className="btn more-btn upgrade-pool-btn"
-            data-toggle="modal"
-            data-target="#upgradePoolModal"
-          >  Upgrade Pool
           </button>
-          }
           {props.personalData ? props.personalData.personalData.isExist ?
             <button
               className="btn more-btn"
