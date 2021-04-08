@@ -110,6 +110,7 @@ const Dashboard = (props) => {
       var time = history[history.length - 1].timestamp.toNumber();
       var s = new Date(time * 1000).getDate();
       const diff = Math.abs((new Date().getDate()) - s);
+      console.log("date  diff", diff)
       if (diff < 7) {
         setPoolActivate(false)
       }
