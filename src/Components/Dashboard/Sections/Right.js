@@ -9,6 +9,7 @@ const Right = (props) => {
   const [refLink, setRefLink] = useState();
   const [copySuccess, setCopySuccess] = useState("");
   const [url, setUrl] = useState("");
+
   const getMyRefLink = (addr) => {
 
     return url + "?ref=" + addr;

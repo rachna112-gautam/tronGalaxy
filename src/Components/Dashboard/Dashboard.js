@@ -59,22 +59,22 @@ const Dashboard = (props) => {
       return;
     }
     else if (props.personalData.personalData.currPool === 9 && props.personalData.personalData.directReferrals < 2) {
-      toast.error('You must have 2 direct referral to buy 10th pool',
+      toast.error('You must have 2nd direct referral to buy 10th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
     else if (props.personalData.personalData.currPool === 12 && props.personalData.personalData.directReferrals < 3) {
-      toast.error('You must have 3 direct referral to buy 10th pool',
+      toast.error('You must have 3rd direct referral to buy 10th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
     else if (props.personalData.personalData.currPool === 15 && props.personalData.personalData.directReferrals < 4) {
-      toast.error('You must have 4 direct referral to buy 16th pool',
+      toast.error('You must have 4th direct referral to buy 16th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
     else if (props.personalData.personalData.currPool === 18 && props.personalData.personalData.directReferrals < 5) {
-      toast.error('You must have 5 direct referral to buy 19th pool',
+      toast.error('You must have 5th direct referral to buy 19th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
@@ -92,6 +92,8 @@ const Dashboard = (props) => {
         callValue: amount,
         feeLimit: 1000000000
       });
+      toast.success('You have successfully updated the pool',
+        { position: toast.POSITION.TOP_CENTER })
       window.location.reload();
     }
     else {
@@ -122,6 +124,8 @@ const Dashboard = (props) => {
         from: props.account, callValue: 30000000 * props.personalData.personalData.dollars,
         feeLimit: 1000000000
       });
+    toast.success('You have successfully entered the system',
+      { position: toast.POSITION.TOP_CENTER })
     window.location.reload();
   };
 

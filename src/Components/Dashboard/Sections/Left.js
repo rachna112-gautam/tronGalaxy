@@ -4,10 +4,17 @@ import Box from "./Box";
 import { connect } from "react-redux";
 const Left = (props) => {
   const [personalData, setPersonalData] = useState();
+  const [holdAmnt, setHoldAmnt] = useState(0);
 
   useEffect(() => {
     personaldata();
   }, [props.personalData]);
+
+  useEffect(() => {
+    if (props.personalData) {
+      setHoldAmnt(parseFloat(props.personalData.personalData.holdAmount / props.personalData.personalData.dollars).toFixed(2));
+    }
+  }, [props.personalData, holdAmnt])
   const personaldata = async () => {
     if (!props.personalData) {
       return;
@@ -71,7 +78,7 @@ const Left = (props) => {
         <div className="col-lg-4 col-sm-6 col-md-6">
           <Box
             title="Hold Amount"
-            value={personalData ? parseFloat(personalData.holdAmount / personalData.dollars).toFixed(2) : "-"}
+            value={holdAmnt}
             icon="dollar"
             number="5"
           />

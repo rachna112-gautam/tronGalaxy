@@ -89,6 +89,8 @@ const Blockchain = (props) => {
   }, [contract]);
 
 
+
+
   const fetchMyTRXBal = async (_tronWeb) => {
     let bal = await _tronWeb.trx.getAccount(
       _tronWeb.defaultAddress.base58
