@@ -3,7 +3,6 @@ import "./Dashboard.css";
 import Right from "./Sections/Right";
 import Left from "./Sections/Left";
 import Table from "./Sections/Table";
-import Header from "./Sections/Header";
 import TopNav from './Sections/TopNav';
 import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
@@ -15,7 +14,8 @@ const Dashboard = (props) => {
   const [contract, setContract] = useState();
   const [poolAmount, setPoolAmount] = useState([]);
   const [history, setHistory] = useState({});
-  const [poolActivate, setPoolActivate] = useState(false)
+  const [poolActivate, setPoolActivate] = useState(false);
+  const [pool, setPool] = useState(0);
   function setPoolPrice() {
     let price = [];
 
@@ -49,6 +49,7 @@ const Dashboard = (props) => {
     }
 
     let currPool = props.personalData.personalData.currPool;
+    setPool(currPool)
     console.log("personalDataaaaaaaaa", props.personalData);
     let hold = parseInt(props.personalData.personalData.holdAmount * 10 ** 6);
 
@@ -80,7 +81,7 @@ const Dashboard = (props) => {
     }
     console.log("hold..", typeof props.personalData.currPool);
     if (currPool === 20) {
-      currPool = 0;
+      setPool(0)
     }
     let amount = props.personalData.personalData.poolPrice[currPool] - hold;
     if (amount < 0) {
@@ -182,7 +183,7 @@ const Dashboard = (props) => {
                 <i className="fa fa-dollar"></i>
                 <span className="ml-3 font-weight-bold">
                   {props.personalData
-                    ? poolAmount[props.personalData.personalData.currPool]
+                    ? poolAmount[pool]
                     : "0"}
                 </span>
               </div>
