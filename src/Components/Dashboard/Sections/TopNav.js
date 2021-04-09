@@ -2,13 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "./../../../assets/TronGalaxyPower.png";
 import { connect } from "react-redux"
 export default function TopNav(props) {
-  const [personalData, setPersonalData] = useState(0)
 
-  useEffect(() => {
-    if (props.personalData)
-      setPersonalData(props.personalData.personalData.contractBalance)
-
-  }, [props])
   return (
     <nav class="top-navbar">
       <div class="container-fluid header">
@@ -19,7 +13,9 @@ export default function TopNav(props) {
         <div className="contract-bal">
           Contract Balance
         <span className="ml-3">
-            {props.personalData ? props.personalData.personalData.contractBalance : 0}
+            {props.personalData
+              ? props.personalData.personalData.contractBalance
+              : "-"}
           </span>
         </div>
       </div>
@@ -29,7 +25,6 @@ export default function TopNav(props) {
 const mapStateToProps = (state) => {
   return {
     personalData: state.personalData,
-
     account: state.account,
   };
 };

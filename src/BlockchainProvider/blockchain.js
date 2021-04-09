@@ -15,7 +15,7 @@ const Blockchain = (props) => {
   const [personalData, setPersonalData] = useState({});
   const [poolsPrice, setPoolsPrice] = useState([]);
   const [globalLoading, setGlobalLoading] = useState(true);
-
+  const [myTronBal, setMyTronBal] = useState();
   useEffect(() => {
     if (!tronWeb && loading) {
       const interval = setInterval(() => {
@@ -44,6 +44,7 @@ const Blockchain = (props) => {
     if (!contract && tronWeb) {
       const interval = setInterval(() => {
         if (tronWeb) {
+          fetchMyTRXBal(window.tronWeb);
           loadContract(window.tronWeb, window.tronWeb.defaultAddress.base58);
           clearInterval(interval);
           return;
@@ -74,6 +75,7 @@ const Blockchain = (props) => {
     props.dispatch(
       onPersonalDataLoaded({
         personalData,
+        myTronBal
       })
     );
   }, [personalData]);
@@ -86,6 +88,21 @@ const Blockchain = (props) => {
     );
   }, [contract]);
 
+
+  const fetchMyTRXBal = async (_tronWeb) => {
+    let bal = await _tronWeb.trx.getAccount(
+      _tronWeb.defaultAddress.base58
+    );
+
+    if (bal.balance > 0) {
+      bal = (bal.balance / 10 ** 6).toFixed(2)
+    } else {
+      bal = "00"
+    }
+
+    console.log("bal", bal)
+    setMyTronBal(bal)
+  }
   const loadContract = async (_tronWeb, myWallet) => {
     let _contract = await _tronWeb.contract().at(Config.CONTRACT_ADDRESS);
     console.log("contract", _contract);
