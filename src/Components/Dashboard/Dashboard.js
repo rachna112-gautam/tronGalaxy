@@ -58,13 +58,46 @@ const Dashboard = (props) => {
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
-    // console.log("hold..", typeof props.personalData.currPool);
-    await props.contract.contract.methods.buyPool().send({
-      from: props.account.address,
-      callValue: props.personalData.personalData.poolPrice[currPool] - hold,
-      feeLimit: 1000000000
-    });
-    window.location.reload();
+    else if (props.personalData.personalData.currPool === 9 && props.personalData.personalData.directReferrals < 2) {
+      toast.error('You must have 2 direct referral to buy 10th pool',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
+    else if (props.personalData.personalData.currPool === 12 && props.personalData.personalData.directReferrals < 3) {
+      toast.error('You must have 3 direct referral to buy 10th pool',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
+    else if (props.personalData.personalData.currPool === 15 && props.personalData.personalData.directReferrals < 4) {
+      toast.error('You must have 4 direct referral to buy 16th pool',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
+    else if (props.personalData.personalData.currPool === 18 && props.personalData.personalData.directReferrals < 5) {
+      toast.error('You must have 5 direct referral to buy 19th pool',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
+    console.log("hold..", typeof props.personalData.currPool);
+    if (currPool === 20) {
+      currPool = 0;
+    }
+    let amount = props.personalData.personalData.poolPrice[currPool] - hold;
+    if (amount < 0) {
+      amount = 0;
+    }
+    console.log("amou", amount)
+    if (hold) {
+      await props.contract.contract.buyPool().send({
+        from: props.account.address,
+        callValue: amount,
+        feeLimit: 1000000000
+      });
+      window.location.reload();
+    }
+    else {
+      alert("hold amount undefined")
+    }
   };
 
   const enter = async () => {
@@ -83,6 +116,7 @@ const Dashboard = (props) => {
     if (_ref === null) {
       _ref = Config.CONTRACT_ADDRESS;
     }
+
     await props.contract.contract.methods
       .enterSystem(_ref)
       .send({
@@ -245,11 +279,11 @@ const Dashboard = (props) => {
       </div>
       <Row>
         <Col xs="12" sm="12" lg="12" className="upgrade-pool">
-       <button
+          <button
             className="btn more-btn upgrade-pool-btn"
             data-toggle="modal"
             data-target="#upgradePoolModal"
-           
+
           >
             Upgrade Pool
           </button>
