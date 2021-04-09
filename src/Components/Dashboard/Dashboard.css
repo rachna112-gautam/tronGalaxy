@@ -436,3 +436,29 @@ Col {
   align-items: center;
   font-size: 2rem;
 }
+
+.table-responsive {
+  max-height: 334px;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.table-borderless tbody + tbody,
+.table-borderless td,
+.table-borderless th,
+.table-borderless thead th {
+  border: 0;
+  text-align: center;
+}

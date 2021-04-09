@@ -48,8 +48,7 @@ const Dashboard = (props) => {
       return;
     }
 
-    let currPool = props.personalData.personalData.currPool;
-    setPool(currPool)
+
     console.log("personalDataaaaaaaaa", props.personalData);
     let hold = parseInt(props.personalData.personalData.holdAmount * 10 ** 6);
 
@@ -79,12 +78,11 @@ const Dashboard = (props) => {
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
-    console.log("hold..", typeof props.personalData.currPool);
-    if (currPool === 20) {
-      setPool(0)
-    }
-    let amount = props.personalData.personalData.poolPrice[currPool] - hold;
-    if (amount < 0) {
+
+
+    let amount = props.personalData.personalData.poolPrice[pool] - hold;
+    console.log("amount", amount)
+    if (amount < 0 || amount === undefined) {
       amount = 0;
     }
     console.log("amou", amount)
@@ -137,7 +135,11 @@ const Dashboard = (props) => {
       return;
     }
     setHistory(props.personalData.personalData.history);
-
+    let currPool = props.personalData.personalData.currPool;
+    setPool(currPool);
+    if (currPool === 20) {
+      setPool(0)
+    }
   }, [props.personalData]);
   useEffect(() => {
     if (history && history.length > 0) {
@@ -193,7 +195,7 @@ const Dashboard = (props) => {
                 </div>
                 <span className="ml-3 font-weight-bold">
                   {props.personalData
-                    ? poolAmount[props.personalData.personalData.currPool] *
+                    ? poolAmount[pool] *
                     parseInt(props.personalData.personalData.dollars)
                     : "0"}
                 </span>
