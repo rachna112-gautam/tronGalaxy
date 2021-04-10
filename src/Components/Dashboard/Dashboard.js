@@ -92,7 +92,7 @@ const Dashboard = (props) => {
         callValue: amount,
         feeLimit: 1000000000
       });
-      toast.success('You have successfully updated the pool',
+      toast.success('You have successfully upgraded the pool',
         { position: toast.POSITION.TOP_CENTER })
       window.location.reload();
     }

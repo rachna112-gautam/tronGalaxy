@@ -12,9 +12,10 @@ const Left = (props) => {
 
   useEffect(() => {
     if (props.personalData) {
+      console.log("updated hold amount", props.personalData.personalData.holdAmount)
       setHoldAmnt(parseFloat(props.personalData.personalData.holdAmount / props.personalData.personalData.dollars).toFixed(2));
     }
-  }, [props.personalData, holdAmnt])
+  }, [props.personalData])
   const personaldata = async () => {
     if (!props.personalData) {
       return;
