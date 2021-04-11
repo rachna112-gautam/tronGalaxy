@@ -16,6 +16,7 @@ const Dashboard = (props) => {
   const [history, setHistory] = useState({});
   const [poolActivate, setPoolActivate] = useState(false);
   const [pool, setPool] = useState(0);
+  const [upgradedPool, setUpgradedPool] = useState(false);
   function setPoolPrice() {
     let price = [];
 
@@ -26,14 +27,12 @@ const Dashboard = (props) => {
   }
 
   useEffect(() => {
-    console.log("pool price in personal data----->", getPoolPrice());
+
     setPoolPrice();
-    console.log("props in dashboard-->", props)
+
   }, [props.personalData]);
 
-  console.log("contract in dashboard ------>", props.contract);
-  console.log("account in dashboard----->", props.account);
-  console.log("personalDataaaaaaaaa", props.personalData);
+
 
   const getPoolPrice = () => {
     if (!props.personalData || !props.account) {
@@ -42,17 +41,19 @@ const Dashboard = (props) => {
     let poolPrice = props.personalData.personalData.dollars;
     return poolPrice;
   };
-
+  useEffect(() => {
+    if (props.contract)
+      isActive();
+  }, [upgradedPool, props.contract])
   const upgradePool = async () => {
+
     if (!props.personalData || !props.account) {
       return;
     }
 
-
-    console.log("personalDataaaaaaaaa", props.personalData);
     let hold = parseInt(props.personalData.personalData.holdAmount * 10 ** 6);
 
-    console.log("hold amount is------->", hold);
+
     if (props.personalData.personalData.currPool === 6 && props.personalData.personalData.directReferrals < 1) {
       toast.error('You must have 1 direct referral to buy 7th pool',
         { position: toast.POSITION.TOP_CENTER })
@@ -87,14 +88,16 @@ const Dashboard = (props) => {
     }
     console.log("amou", amount)
     if (hold) {
-      await props.contract.contract.buyPool().send({
+      const buyPoolStatus = await props.contract.contract.buyPool().send({
         from: props.account.address,
         callValue: amount,
         feeLimit: 1000000000
       });
+      console.log("type of hash", typeof (buyPoolStatus))
+      props.personalData.personalData.tronWeb.trx.getTransactionInfo(buyPoolStatus);
       toast.success('You have successfully upgraded the pool',
         { position: toast.POSITION.TOP_CENTER })
-      window.location.reload();
+
     }
     else {
       alert("hold amount undefined")
@@ -129,10 +132,19 @@ const Dashboard = (props) => {
     window.location.reload();
   };
 
+  const isActive = async () => {
+    if (!props.contract.contract || !props.account) {
+      console.log("content not loaded");
+      return;
+    }
+    const upgradedValue = await props.contract.contract.methods.checkIfNextLevelCanBeUpgraded(props.account.address).call();
+    setUpgradedPool(upgradedValue);
+    console.log("pooooooooooooool", upgradedPool)
 
+  }
 
   useEffect(() => {
-    console.log("persona data in table file is---->", props.personalData);
+
 
     if (!props.personalData) {
       console.log("contract not loaded");
@@ -286,14 +298,22 @@ const Dashboard = (props) => {
       </div>
       <Row>
         <Col xs="12" sm="12" lg="12" className="upgrade-pool">
-          <button
-            className="btn more-btn upgrade-pool-btn"
-            data-toggle="modal"
-            data-target="#upgradePoolModal"
+          {upgradedPool ?
+            <button
+              className="btn more-btn upgrade-pool-btn"
+              data-toggle="modal"
+              data-target="#upgradePoolModal"
 
-          >
-            Upgrade Pool
-          </button>
+            >
+              Upgrade Pool
+          </button> : <button
+              className="btn more-btn upgrade-pool-btn"
+              data-toggle="modal"
+              data-target="#upgradePoolModal"
+              disabled
+            >
+              Upgrade Pool
+        </button>}
           {props.personalData ? props.personalData.personalData.isExist ?
             <button
               className="btn more-btn"
