@@ -85,7 +85,7 @@ const Dashboard = (props) => {
 
 
     let amount = props.personalData.personalData.poolPrice[pool] - hold;
-   
+
     console.log("amount", amount)
     if (amount < 0 || amount === undefined) {
       amount = 0;
@@ -101,7 +101,7 @@ const Dashboard = (props) => {
       props.personalData.personalData.tronWeb.trx.getTransactionInfo(buyPoolStatus);
       toast.success('You have successfully upgraded the pool',
         { position: toast.POSITION.TOP_CENTER })
-
+      window.location.reload();
     }
     else {
       alert("hold amount undefined")
@@ -119,7 +119,7 @@ const Dashboard = (props) => {
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
- 
+
     let url = window.location.href;
     let params = new URL(url).searchParams;
     let _ref = params.get("ref");
