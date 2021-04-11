@@ -40,8 +40,8 @@ function Table(props) {
             <tr>
               <th>DATE</th>
               <th>POOL</th>
-              <th>AMOUNT</th>
-              <th>PRICE</th>
+              <th>AMOUNT($)</th>
+              <th>AMOUNT(TRX)</th>
             </tr>
           </thead>
           <tbody>
@@ -54,8 +54,8 @@ function Table(props) {
                 return <tr key={i}>
                   <td>{s}</td>
                   <td>{item.pool.toNumber()}</td>
-                  <td>{item.amount.toNumber()}</td>
-                  <td>{item.price.toNumber()}</td>
+                  <td>{parseFloat(item.amount.toNumber() / item.price.toNumber()).toFixed(2)}</td>
+                  <td>{item.amount.toNumber() / 10 ** 6}</td>
                 </tr>
               }) : " "
             }

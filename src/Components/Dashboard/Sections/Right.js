@@ -9,6 +9,7 @@ const Right = (props) => {
   const [refLink, setRefLink] = useState();
   const [copySuccess, setCopySuccess] = useState("");
   const [url, setUrl] = useState("");
+
   const getMyRefLink = (addr) => {
 
     return url + "?ref=" + addr;
@@ -28,6 +29,7 @@ const Right = (props) => {
 
     console.log("pros.accout", props.address);
   }, [props.account]);
+
 
   function copyToClipboard(e) {
     var textField = document.createElement("textarea");
@@ -53,7 +55,11 @@ const Right = (props) => {
         <h2>Wallet balance</h2>
         <div className="balance">
           <i className="fa fa-dollar"></i>
-          <span className="wallet-value">-</span>
+          <span className="wallet-value">{props.personalData ? parseFloat(props.personalData.myTronBal / props.personalData.personalData.dollars).toFixed(2) : 0}</span>
+        </div>
+        <div className="balance">
+          <i className="fa">TRX</i>
+          <span className="wallet-value">{props.personalData ? parseInt(props.personalData.myTronBal).toFixed(2) : 0}</span>
         </div>
       </div>
 

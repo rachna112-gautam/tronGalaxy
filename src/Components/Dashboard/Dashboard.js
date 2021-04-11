@@ -3,7 +3,6 @@ import "./Dashboard.css";
 import Right from "./Sections/Right";
 import Left from "./Sections/Left";
 import Table from "./Sections/Table";
-import Header from "./Sections/Header";
 import TopNav from './Sections/TopNav';
 import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
@@ -15,7 +14,8 @@ const Dashboard = (props) => {
   const [contract, setContract] = useState();
   const [poolAmount, setPoolAmount] = useState([]);
   const [history, setHistory] = useState({});
-  const [poolActivate, setPoolActivate] = useState(false)
+  const [poolActivate, setPoolActivate] = useState(false);
+  const [pool, setPool] = useState(0);
   function setPoolPrice() {
     let price = [];
 
@@ -48,7 +48,7 @@ const Dashboard = (props) => {
       return;
     }
 
-    let currPool = props.personalData.personalData.currPool;
+
     console.log("personalDataaaaaaaaa", props.personalData);
     let hold = parseInt(props.personalData.personalData.holdAmount * 10 ** 6);
 
@@ -59,31 +59,30 @@ const Dashboard = (props) => {
       return;
     }
     else if (props.personalData.personalData.currPool === 9 && props.personalData.personalData.directReferrals < 2) {
-      toast.error('You must have 2 direct referral to buy 10th pool',
+      toast.error('You must have 2nd direct referral to buy 10th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
     else if (props.personalData.personalData.currPool === 12 && props.personalData.personalData.directReferrals < 3) {
-      toast.error('You must have 3 direct referral to buy 10th pool',
+      toast.error('You must have 3rd direct referral to buy 10th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
     else if (props.personalData.personalData.currPool === 15 && props.personalData.personalData.directReferrals < 4) {
-      toast.error('You must have 4 direct referral to buy 16th pool',
+      toast.error('You must have 4th direct referral to buy 16th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
     else if (props.personalData.personalData.currPool === 18 && props.personalData.personalData.directReferrals < 5) {
-      toast.error('You must have 5 direct referral to buy 19th pool',
+      toast.error('You must have 5th direct referral to buy 19th pool',
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
-    console.log("hold..", typeof props.personalData.currPool);
-    if (currPool === 20) {
-      currPool = 0;
-    }
-    let amount = props.personalData.personalData.poolPrice[currPool] - hold;
-    if (amount < 0) {
+
+
+    let amount = props.personalData.personalData.poolPrice[pool] - hold;
+    console.log("amount", amount)
+    if (amount < 0 || amount === undefined) {
       amount = 0;
     }
     console.log("amou", amount)
@@ -93,6 +92,8 @@ const Dashboard = (props) => {
         callValue: amount,
         feeLimit: 1000000000
       });
+      toast.success('You have successfully upgraded the pool',
+        { position: toast.POSITION.TOP_CENTER })
       window.location.reload();
     }
     else {
@@ -123,6 +124,8 @@ const Dashboard = (props) => {
         from: props.account, callValue: 30000000 * props.personalData.personalData.dollars,
         feeLimit: 1000000000
       });
+    toast.success('You have successfully entered the system',
+      { position: toast.POSITION.TOP_CENTER })
     window.location.reload();
   };
 
@@ -136,7 +139,11 @@ const Dashboard = (props) => {
       return;
     }
     setHistory(props.personalData.personalData.history);
-
+    let currPool = props.personalData.personalData.currPool;
+    setPool(currPool);
+    if (currPool === 20) {
+      setPool(0)
+    }
   }, [props.personalData]);
   useEffect(() => {
     if (history && history.length > 0) {
@@ -182,7 +189,7 @@ const Dashboard = (props) => {
                 <i className="fa fa-dollar"></i>
                 <span className="ml-3 font-weight-bold">
                   {props.personalData
-                    ? poolAmount[props.personalData.personalData.currPool]
+                    ? poolAmount[pool]
                     : "0"}
                 </span>
               </div>
@@ -192,7 +199,7 @@ const Dashboard = (props) => {
                 </div>
                 <span className="ml-3 font-weight-bold">
                   {props.personalData
-                    ? poolAmount[props.personalData.personalData.currPool] *
+                    ? poolAmount[pool] *
                     parseInt(props.personalData.personalData.dollars)
                     : "0"}
                 </span>
