@@ -85,11 +85,7 @@ const Dashboard = (props) => {
 
 
     let amount = props.personalData.personalData.poolPrice[pool] - hold;
-    if (((amount + 60)) > WalletBal) {
-      toast.error('Insufficient Balance',
-        { position: toast.POSITION.TOP_CENTER })
-      return;
-    }
+   
     console.log("amount", amount)
     if (amount < 0 || amount === undefined) {
       amount = 0;
@@ -123,11 +119,7 @@ const Dashboard = (props) => {
         { position: toast.POSITION.TOP_CENTER })
       return;
     }
-    if (((poolAmount[pool] + 60)) > WalletBal) {
-      toast.error('Insufficient Balance',
-        { position: toast.POSITION.TOP_CENTER })
-      return;
-    }
+ 
     let url = window.location.href;
     let params = new URL(url).searchParams;
     let _ref = params.get("ref");
