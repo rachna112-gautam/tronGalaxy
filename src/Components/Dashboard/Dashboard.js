@@ -17,6 +17,7 @@ const Dashboard = (props) => {
   const [poolActivate, setPoolActivate] = useState(false);
   const [pool, setPool] = useState(0);
   const [upgradedPool, setUpgradedPool] = useState(false);
+  const [WalletBal, setWalletBal] = useState();
   function setPoolPrice() {
     let price = [];
 
@@ -29,7 +30,9 @@ const Dashboard = (props) => {
   useEffect(() => {
 
     setPoolPrice();
-
+    if (props.personalData) {
+      setWalletBal(props.personalData.myTronBal)
+    }
   }, [props.personalData]);
 
 
@@ -82,6 +85,11 @@ const Dashboard = (props) => {
 
 
     let amount = props.personalData.personalData.poolPrice[pool] - hold;
+    if (((amount + 60)) > WalletBal) {
+      toast.error('Insufficient Balance',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
     console.log("amount", amount)
     if (amount < 0 || amount === undefined) {
       amount = 0;
@@ -111,7 +119,13 @@ const Dashboard = (props) => {
     }
 
     if (props.personalData.personalData.isExist) {
-      alert("user already exist");
+      toast.success('User already exists',
+        { position: toast.POSITION.TOP_CENTER })
+      return;
+    }
+    if (((poolAmount[pool] + 60)) > WalletBal) {
+      toast.error('Insufficient Balance',
+        { position: toast.POSITION.TOP_CENTER })
       return;
     }
     let url = window.location.href;
@@ -139,7 +153,7 @@ const Dashboard = (props) => {
     }
     const upgradedValue = await props.contract.contract.methods.checkIfNextLevelCanBeUpgraded(props.account.address).call();
     setUpgradedPool(upgradedValue);
-    console.log("pooooooooooooool", upgradedPool)
+
 
   }
 
@@ -173,6 +187,9 @@ const Dashboard = (props) => {
   }, [history])
   return (
     <div className="dashboard">
+      {
+
+      }
       <div
         className="modal fade"
         id="upgradePoolModal"
