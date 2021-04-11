@@ -93,6 +93,8 @@ const Blockchain = (props) => {
   };
 
   const initPersonalData = async () => {
+    console.log("tx trx", tronWeb.trx)
+    console.log("tx data", tronWeb.trx.getTransactionInfo("905398ea43dad59667f2e5812f9e9111283e7c74068f898b20c8be747acc6318"))
     let res = await contract.users(account).call();
     let id = res.id.toNumber();
     let directReferrals = res.totalReferrals.toNumber();
