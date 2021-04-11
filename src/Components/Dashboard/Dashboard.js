@@ -87,11 +87,12 @@ const Dashboard = (props) => {
     }
     console.log("amou", amount)
     if (hold) {
-      await props.contract.contract.buyPool().send({
+      const res = await props.contract.contract.buyPool().send({
         from: props.account.address,
         callValue: amount,
         feeLimit: 1000000000
       });
+      console.log(tronWeb.trx.getTransactionInfo(res));
       toast.success('You have successfully upgraded the pool',
         { position: toast.POSITION.TOP_CENTER })
       window.location.reload();
