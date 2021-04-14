@@ -14,7 +14,7 @@ function TopNav(props) {
   return (
     <nav class="top-navbar">
       <div class="container-fluid header">
-        <a class="navbar-logo" href="/landing" aria-label="Tron Galaxy Power">
+        <a class="navbar-logo" href="/" aria-label="Tron Galaxy Power">
           <img src={Logo} alt="" />
         </a>
 
