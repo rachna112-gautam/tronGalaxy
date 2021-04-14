@@ -1,4 +1,4 @@
 export default {
-  CONTRACT_ADDRESS: 'TJbyLch7urpJAD8TEeNx9zi5BgguadREWT',
+  CONTRACT_ADDRESS: 'TTuADfn421BMfimCLFPNhkXcztGxTqnQs8',
   ADMIN_WALLET: 'TYPGbv47eFGBCDvjrPZNgXs3JfrqPMTWS9'
 };
