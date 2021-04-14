@@ -38,6 +38,7 @@ function App(props) {
 
 
         <Route exact path="/" component={Dashboard} />
+        <Route exact path="/landing" component={LandingPage} />
       </div>
     </Router>
   );
