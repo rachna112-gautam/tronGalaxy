@@ -220,8 +220,8 @@ const Dashboard = (props) => {
                 </div>
                 <span className="ml-3 font-weight-bold">
                   {props.personalData
-                    ? poolAmount[pool] *
-                    parseInt(props.personalData.personalData.dollars)
+                    ? (poolAmount[pool] *
+                      parseFloat(props.personalData.personalData.dollars)).toFixed(3)
                     : "0"}
                 </span>
               </div>
