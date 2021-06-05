@@ -138,15 +138,15 @@ const Blockchain = (props) => {
       await contract.admin1Wallet().call(),
       true
     );
-    let admin2Wallet = beautifyNumber(
-      await contract.admin2Wallet().call(),
-      true
-    );
+    // let admin2Wallet = beautifyNumber(
+    //   await contract.admin2Wallet().call(),
+    //   true
+    // );
 
     console.log("contract balance", contractBalance);
     console.log("total users", totalUsers);
     console.log("admin1", admin1Wallet);
-    console.log("admin2", admin2Wallet);
+    // console.log("admin2", admin2Wallet);
 
     let dollars =
       (await contract.methods.dollars().call()).toNumber() / 10 ** 6;
