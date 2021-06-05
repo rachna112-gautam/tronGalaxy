@@ -32,7 +32,7 @@ function App(props) {
         }}
       />
       <Router>
-        {/* <Route path="/dashboard" exact component={Dashboard} /> */}
+        <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/" exact component={LandingPage} />
       </Router>
     </div>
